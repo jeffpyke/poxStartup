@@ -12,21 +12,28 @@ sys.path.append("../../")
 from pox.ext.jelly_pox import JELLYPOX
 from subprocess import Popen
 from time import sleep, time
+import networkx as nx
+import random
 
 class JellyFishTop(Topo):
     ''' TODO, build your topology here'''
-    def build(self):
+    def build( self, S, N, r):
+        "Create custom topo."
 
-            leftHost = self.addHost( 'h1' )
-            rightHost = self.addHost( 'h2' )
-            leftSwitch = self.addSwitch( 's3' )
-            rightSwitch = self.addSwitch( 's4' )
+        # Initialize topology
+        # Topo.__init__( self )
 
-            # Add links
-            self.addLink( leftHost, leftSwitch )
-            self.addLink( leftSwitch, rightSwitch )
-            self.addLink( rightSwitch, rightHost )
+        hosts = [self.addHost('h%d'%(i,)) for i in range(S)]
+        switches = [self.addSwitch('s%d'%(i,)) for i in range(N)]
 
+        # make server switch connections
+        for i in range(S):
+            conn_switch = random.randint(0, N-1)
+            self.addLink(hosts[i], switches[conn_switch])
+
+        rrg = nx.random_regular_graph(r, N, 100)
+        for e in rrg.edges():
+            self.addLink(switches[e[0]], switches[e[1]])
 
 def experiment(net):
         net.start()
@@ -35,10 +42,10 @@ def experiment(net):
         net.stop()
 
 def main():
-	topo = JellyFishTop()
-	net = Mininet(topo=topo, host=CPULimitedHost, link = TCLink, controller=JELLYPOX)
-	experiment(net)
+    topo = JellyFishTop(20, 5, 2)
+    net = Mininet(topo=topo, host=CPULimitedHost, link = TCLink, controller=JELLYPOX)
+    experiment(net)
 
 if __name__ == "__main__":
-	main()
+    main()
 
