@@ -23,10 +23,10 @@ It's roughly similar to the one Brandon Heller did for NOX.
 
 from pox.core import core
 import pox.openflow.libopenflow_01 as of
+from pox.lib.addresses import EthAddr
+import networkx as nx
 
 log = core.getLogger()
-
-
 
 class Tutorial (object):
   """
@@ -45,6 +45,41 @@ class Tutorial (object):
     # which switch port (keys are MACs, values are ports).
     self.mac_to_port = {}
 
+    S = 50
+    N = 20
+    r = 4
+    # seed = 100 is constant so that the corresponding topo and controller graph are the same
+    rrg = nx.random_regular_graph(r, N, 100)
+    for i in range(S):
+      src_hwaddr = EthAddr('00:00:00:00:00:%02d'%(i+1)) 
+      for j in range(S):
+        if i == j:
+          continue
+        dst_hwaddr = EthAddr('00:00:00:00:00:%02d'%(j+1))
+        src_switch = i%N
+        dst_switch = j%N
+        
+        if src_switch == dst_switch:
+          path = [i, src_switch, j]
+        else:
+          path = [i, src_switch, dst_switch, j] # path to go from src to dst
+        self.add_entry(src_hwaddr, dst_hwaddr, path, S)
+
+  def add_entry(self, src_hwaddr, dst_hwaddr, path, S):
+    for i in range(1, len(path)-1):
+      msg = of.ofp_flow_mod()
+      msg.match.dl_src = EthAddr(src_hwaddr)
+      msg.match.dl_dst = EthAddr(dst_hwaddr)
+      if(i == 1):
+        msg.match.in_port = path[i]*1000 + 1 + path[i-1] # host-switch port
+      else:
+        msg.match.in_port = path[i]*1000 + 1 + path[i-1] + S # inter switch link
+      
+      if(i == len(path)-2):
+        msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1])) # host-switch port
+      else:
+        msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1] + S)) # inter switch link
+      self.connection.send(msg)
 
   def resend_packet (self, packet_in, out_port):
     """
@@ -86,34 +121,36 @@ class Tutorial (object):
     # Here's some psuedocode to start you off implementing a learning
     # switch.  You'll need to rewrite it as real Python code.
 
-    # Learn the port for the source MAC
-    if str(packet.src) not in self.mac_to_port:
-      self.mac_to_port[str(packet.src)] = packet_in.in_port
-      log.error("mapped %s %d"%(str(packet.src), packet_in.in_port))
+    # DOING NOTHING
+    # # Learn the port for the source MAC
+    # if str(packet.src) not in self.mac_to_port:
+    #   self.mac_to_port[str(packet.src)] = packet_in.in_port
+    #   log.error("mapped %s %d"%(str(packet.src), packet_in.in_port))
 
-    # if the port associated with the destination MAC of the packet is known:
-    if str(packet.dst) in self.mac_to_port:
-      # Send packet out the associated port
-      log.error("Sending out of port%d"%(self.mac_to_port[str(packet.dst)],))
-      self.resend_packet(packet_in, self.mac_to_port[str(packet.dst)])
+    # # if the port associated with the destination MAC of the packet is known:
+    # if str(packet.dst) in self.mac_to_port:
+    #   # Send packet out the associated port
+    #   # log.error("Sending out of port%d"%(self.mac_to_port[str(packet.dst)],))
+    #   # self.resend_packet(packet_in, self.mac_to_port[str(packet.dst)])
 
-      # Once you have the above working, try pushing a flow entry
-      # instead of resending the packet (comment out the above and
-      # uncomment and complete the below.)
+    #   # Once you have the above working, try pushing a flow entry
+    #   # instead of resending the packet (comment out the above and
+    #   # uncomment and complete the below.)
+    #   # log.error(dir(packet))
+    #   log.error("Installing flow..., src:%s, dst:%s, in port:%d, out port:%d"%(str(packet.src), str(packet.dst), self.mac_to_port[str(packet.src)], self.mac_to_port[str(packet.dst)]))
+    #   # # Maybe the log statement should have source/destination/port?
 
-      # log.error("Installing flow..., src:%s, dst:%s, in port:%d, out port:%d"%(str(packet.src), str(packet.dst), self.mac_to_port[str(packet.src)], self.mac_to_port[str(packet.dst)]))
-      # # Maybe the log statement should have source/destination/port?
-
-      # msg = of.ofp_flow_mod()
-      # # Set fields to match received packet
-      # msg.match.dl_src = packet.src
-      # msg.match.dl_dst = packet.dst
-      # msg.actions.append(of.ofp_action_output(port = self.mac_to_port[str(packet.dst)]))
-      # self.connection.send(msg)
-    else:
-      # Flood the packet out everything but the input port
-      # This part looks familiar, right?
-      self.resend_packet(packet_in, of.OFPP_ALL)
+    #   msg = of.ofp_flow_mod()
+    #   msg.data = packet_in
+    #   # Set fields to match received packet
+    #   msg.match.dl_src = packet.src
+    #   msg.match.dl_dst = packet.dst
+    #   msg.actions.append(of.ofp_action_output(port = self.mac_to_port[str(packet.dst)]))
+    #   self.connection.send(msg)
+    # else:
+    #   # Flood the packet out everything but the input port
+    #   # This part looks familiar, right?
+    #   self.resend_packet(packet_in, of.OFPP_ALL)
 
 
   def _handle_PacketIn (self, event):

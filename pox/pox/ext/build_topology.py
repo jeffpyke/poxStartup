@@ -15,6 +15,10 @@ from time import sleep, time
 import networkx as nx
 import random
 
+S = 50
+N = 20
+r = 4
+
 class JellyFishTop(Topo):
     ''' TODO, build your topology here'''
     def build( self, S, N, r):
@@ -28,21 +32,34 @@ class JellyFishTop(Topo):
 
         # make server switch connections
         for i in range(S):
-            conn_switch = random.randint(0, N-1)
-            self.addLink(hosts[i], switches[conn_switch])
+            conn_switch = i%N
+            self.addLink(hosts[i], switches[conn_switch], i, conn_switch*1000 + i + 1)
 
         rrg = nx.random_regular_graph(r, N, 100)
         for e in rrg.edges():
-            self.addLink(switches[e[0]], switches[e[1]])
+            self.addLink(switches[e[0]], switches[e[1]], 1000*e[0] + S + e[1] + 1, 1000*e[1] + S + e[0] + 1)
 
 def experiment(net):
+        for i in range(S):
+            h1 = net.get('h%d'%(i,))
+            # print h2, h2.IP(), h2.MAC()
+            h1.setMAC('00:00:00:00:00:%02d'%(i+1,))
+
+        for i in range(S):
+            for j in range(S):
+                if i == j:
+                    continue
+                h1 = net.get('h%d'%(i,))
+                h2 = net.get('h%d'%(j,))
+                h1.setARP(h2.IP(), h2.MAC())
         net.start()
-        sleep(3)
-        net.pingAll()
+        sleep(5)
+        # net.pingAll()
+        CLI(net)
         net.stop()
 
 def main():
-    topo = JellyFishTop(20, 5, 2)
+    topo = JellyFishTop(S, N, r)
     net = Mininet(topo=topo, host=CPULimitedHost, link = TCLink, controller=JELLYPOX)
     experiment(net)
 
