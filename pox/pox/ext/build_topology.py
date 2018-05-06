@@ -15,8 +15,8 @@ from time import sleep, time
 import networkx as nx
 import random
 
-S = 50
-N = 20
+S = 40
+N = 15
 r = 4
 
 class JellyFishTop(Topo):
