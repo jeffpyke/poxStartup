@@ -18,9 +18,9 @@ import networkx as nx
 import random
 from signal import SIGINT
 
-S = 10
-N = 3
-r = 2
+S = 20
+N = 10
+r = 4
 
 class JellyFishTop(Topo):
     ''' TODO, build your topology here'''
@@ -70,25 +70,34 @@ def experiment(net):
             spopens[other_h] = other_h.popen('iperf', '-s')
             cpopens[h] = h.popen('iperf', '-c', other_h.IP(), '-f', 'm')
         endTime = time() + seconds
+        cclosed = 0
+        sclosed = 0
         for h, line in pmonitor(cpopens, timeoutms=10000):
             if h:
                 info('%s: %s' % (h.name, line))
                 if 'Mbit' in line:
                     speed = float(line.split()[-2])
                     speeds.append(speed)
-            if time() >= endTime:
-                info("shutting down")
-                for p in cpopens.values():
-                    p.send_signal(SIGINT)
-               
+                    cclosed += 1
+            if cclosed == N:
+              for p in cpopens.values():
+                p.send_signal(SIGINT)
+ #            if time() >= endTime:
+ #                info("shutting down")
+ #                for p in cpopens.values():
+ #                    p.send_signal(SIGINT)
+
         for h, line in pmonitor(spopens, timeoutms=10000):
             if h:
                 info('server %s: %s' % (h.name, line))
-            if time() >= endTime:
+                if 'Gbit' in line:
+                  sclosed += 1
+            if sclosed == N:
+ #            if time() >= endTime:
                 info("shutting down")
                 for p in spopens.values():
                     p.send_signal(SIGINT)
-               
+
         # net.pingAll()
         #CLI(net)
         info("got %d speeds, avg %d Mbits/s" % (len(speeds), sum(speeds) / len(speeds)))

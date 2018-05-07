@@ -29,6 +29,8 @@ import random
 
 log = core.getLogger()
 
+route_map = {}
+
 class Tutorial (object):
   """
   A Tutorial object is created for each switch that connects.
@@ -46,9 +48,9 @@ class Tutorial (object):
     # which switch port (keys are MACs, values are ports).
     self.mac_to_port = {}
 
-    S = 10 
-    N = 3
-    r = 2
+    S = 20
+    N = 10
+    r = 4
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
@@ -59,7 +61,7 @@ class Tutorial (object):
         dst_hwaddr = EthAddr('00:00:00:00:00:%02d'%(j+1))
         src_switch = i%N
         dst_switch = j%N
-        
+
         if src_switch == dst_switch:
           path = [src_switch]
         else:
@@ -85,7 +87,7 @@ class Tutorial (object):
         msg.match.in_port = path[i]*1000 + 1 + path[i-1] # host-switch port
       else:
         msg.match.in_port = path[i]*1000 + 1 + path[i-1] + S # inter switch link
-      
+
       if(i == len(path)-2):
         msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1])) # host-switch port
       else:
