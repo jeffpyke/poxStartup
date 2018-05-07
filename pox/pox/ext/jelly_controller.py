@@ -46,9 +46,9 @@ class Tutorial (object):
     # which switch port (keys are MACs, values are ports).
     self.mac_to_port = {}
 
-    S = 40
-    N = 15
-    r = 4
+    S = 10 
+    N = 3
+    r = 2
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
