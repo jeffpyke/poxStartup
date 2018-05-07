@@ -48,9 +48,9 @@ class Tutorial (object):
     # which switch port (keys are MACs, values are ports).
     self.mac_to_port = {}
 
-    S = 20
+    S = 10
     N = 10
-    r = 4
+    r = 3
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
@@ -63,7 +63,7 @@ class Tutorial (object):
         dst_switch = j%N
 
         if src_switch == dst_switch:
-          path = [src_switch]
+          path = [[src_switch]]
         else:
           # path = [src_switch, dst_switch] # path to go from src to dst
           paths = []
@@ -72,27 +72,46 @@ class Tutorial (object):
           log.error('SRC: %d, DST: %d'%(i, j,))
           log.error(paths)
           # select a random path to send traffic from
-          path = random.sample(paths,1)[0]
+          path = random.sample(paths, min(len(paths), 8))
           log.error(path)
           log.error('PATH LEN: %d'%(len(path)))
           log.error('\n')
-        self.add_entry(src_hwaddr, dst_hwaddr, [i] + path + [j], S)
+        for path_ in path:
+            self.add_entry(src_hwaddr, dst_hwaddr, [i] + path_ + [j], S)
+    # log.error(route_map)
 
   def add_entry(self, src_hwaddr, dst_hwaddr, path, S):
     for i in range(1, len(path)-1):
-      msg = of.ofp_flow_mod()
-      msg.match.dl_src = EthAddr(src_hwaddr)
-      msg.match.dl_dst = EthAddr(dst_hwaddr)
+      # msg = of.ofp_flow_mod()
+      # msg.match.dl_src = EthAddr(src_hwaddr)
+      # msg.match.dl_dst = EthAddr(dst_hwaddr)
+      # if(i == 1):
+      #   msg.match.in_port = path[i]*1000 + 1 + path[i-1] # host-switch port
+      # else:
+      #   msg.match.in_port = path[i]*1000 + 1 + path[i-1] + S # inter switch link
+
+      # if(i == len(path)-2):
+      #   msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1])) # host-switch port
+      # else:
+      #   msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1] + S)) # inter switch link
+      # self.connection.send(msg)
+
+      dl_src = EthAddr(src_hwaddr)
+      dl_dst = EthAddr(dst_hwaddr)
       if(i == 1):
-        msg.match.in_port = path[i]*1000 + 1 + path[i-1] # host-switch port
+        in_port = path[i]*1000 + 1 + path[i-1] # host-switch port
       else:
-        msg.match.in_port = path[i]*1000 + 1 + path[i-1] + S # inter switch link
+        in_port = path[i]*1000 + 1 + path[i-1] + S # inter switch link
 
       if(i == len(path)-2):
-        msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1])) # host-switch port
+        out_port = path[i]*1000 + 1 + path[i+1] # host-switch port
       else:
-        msg.actions.append(of.ofp_action_output(port = path[i]*1000 + 1 + path[i+1] + S)) # inter switch link
-      self.connection.send(msg)
+        out_port = path[i]*1000 + 1 + path[i+1] + S # inter switch link
+      key = (dl_src, dl_dst, in_port)
+      if key in route_map:
+          route_map[key].add(out_port)
+      else:
+          route_map[key] = set([out_port])
 
   def resend_packet (self, packet_in, out_port):
     """
@@ -130,7 +149,24 @@ class Tutorial (object):
     """
     Implement switch-like behavior.
     """
-
+    dst = packet.dst
+    src = packet.src
+    in_port = packet_in.in_port
+    if (src, dst, in_port) in route_map:
+    #     log.error("DAFAQ")
+    #     log.error(src)
+    #     log.error(dst)
+    #     log.error(in_port)
+    # else:
+        val = route_map[(src, dst, in_port)]
+        out_port = random.sample(val, 1)[0]
+        log.error("hell yeah")
+        # log.error(src)
+        # log.error(dst)
+        # log.error(in_port)
+        # log.error(out_port)
+        # log.error('%s %s %d %d'%(str(src), str(dst), in_port, out_port))
+        self.resend_packet(packet_in, out_port)
     # Here's some psuedocode to start you off implementing a learning
     # switch.  You'll need to rewrite it as real Python code.
 

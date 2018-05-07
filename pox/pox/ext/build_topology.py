@@ -18,9 +18,9 @@ import networkx as nx
 import random
 from signal import SIGINT
 
-S = 20
+S = 10
 N = 10
-r = 4
+r = 3
 
 class JellyFishTop(Topo):
     ''' TODO, build your topology here'''
@@ -61,6 +61,7 @@ def experiment(net):
         spopens = {}
         speeds = []
         assignments = range(S) 
+        net.pingAll()
         while any([a == i for i, a in enumerate(assignments)]):
             random.shuffle(assignments)
         for i, h in enumerate(net.hosts):
@@ -68,7 +69,7 @@ def experiment(net):
             other_h = net.hosts[assignments[i]]
 # add --parallel for 8 flows
             spopens[other_h] = other_h.popen('iperf', '-s')
-            cpopens[h] = h.popen('iperf', '-c', other_h.IP(), '-f', 'm')
+            cpopens[h] = h.popen('iperf', '-P', '8', '-c', other_h.IP(), '-f', 'm')
         endTime = time() + seconds
         cclosed = 0
         sclosed = 0
@@ -90,7 +91,7 @@ def experiment(net):
         for h, line in pmonitor(spopens, timeoutms=10000):
             if h:
                 info('server %s: %s' % (h.name, line))
-                if 'Gbit' in line:
+                if 'bits/sec' in line:
                   sclosed += 1
             if sclosed == N:
  #            if time() >= endTime:
@@ -98,9 +99,8 @@ def experiment(net):
                 for p in spopens.values():
                     p.send_signal(SIGINT)
 
-        # net.pingAll()
-        #CLI(net)
-        info("got %d speeds, avg %d Mbits/s" % (len(speeds), sum(speeds) / len(speeds)))
+        CLI(net)
+        info("got %d speeds, avg %f Mbits/s" % (len(speeds), float(sum(speeds)) / len(speeds)))
         net.stop()
 
 def main():
