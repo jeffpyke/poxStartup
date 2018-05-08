@@ -53,6 +53,7 @@ class Tutorial (object):
     N = 10
     r = 4
     use_ecmp = False
+
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
@@ -68,11 +69,8 @@ class Tutorial (object):
           path = [[src_switch]]
         elif use_ecmp:
           # path = [src_switch, dst_switch] # path to go from src to dst
-          paths = []
-          for p in nx.all_shortest_paths(rrg, src_switch, dst_switch):
-            paths.append(p)
-          log.error('SRC: %d, DST: %d'%(i, j,))
-          log.error(paths)
+          path = random.sample(list(islice(nx.shortest_simple_paths(rrg, src_switch, dst_switch), k)), 1)[0]
+#log.error('SRC: %d, DST: %d'%(i, j,))
           # select a random path to send traffic from
           path = random.sample(paths, min(len(paths), 8))
           log.error(path)
@@ -80,9 +78,11 @@ class Tutorial (object):
           log.error('\n')
         else:
           path = list(islice(nx.shortest_simple_paths(rrg, src_switch, dst_switch), 8))
+          log.error(path)
+          log.error('PATH LEN: %d'%(len(path)))
+          log.error('\n')
         for path_ in path:
             self.add_entry(src_hwaddr, dst_hwaddr, [i] + path_ + [j], S)
-    # log.error(route_map)
 
   def add_entry(self, src_hwaddr, dst_hwaddr, path, S):
     for i in range(1, len(path)-1):
