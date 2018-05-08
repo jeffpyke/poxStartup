@@ -36,7 +36,7 @@ class JellyFishTop(Topo):
         # make server switch connections
         for i in range(S):
             conn_switch = i%N
-            self.addLink(hosts[i], switches[conn_switch], i, conn_switch*1000 + i + 1)
+            self.addLink(hosts[i], switches[conn_switch], i, conn_switch*1000 + i + 1, bw=5)
 
         rrg = nx.random_regular_graph(r, N, 100)
         for e in rrg.edges():
