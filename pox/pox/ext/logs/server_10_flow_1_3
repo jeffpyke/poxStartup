@@ -1,0 +1,180 @@
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 
+*** Adding switches:
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 
+*** Adding links:
+(h0, s0) (h1, s1) (h2, s2) (h3, s3) (h4, s4) (h5, s5) (h6, s6) (h7, s7) (h8, s8) (h9, s9) (s0, s1) (s0, s2) (s0, s5) (s0, s7) (s1, s2) (s1, s4) (s1, s6) (s2, s3) (s2, s4) (s3, s5) (s3, s8) (s3, s9) (s4, s5) (s4, s6) (s5, s7) (s6, s8) (s6, s9) (s7, s8) (s7, s9) (s8, s9) 
+*** Configuring hosts
+h0 (cfs -1/100000us) h1 (cfs -1/100000us) h2 (cfs -1/100000us) h3 (cfs -1/100000us) h4 (cfs -1/100000us) h5 (cfs -1/100000us) h6 (cfs -1/100000us) h7 (cfs -1/100000us) h8 (cfs -1/100000us) h9 (cfs -1/100000us) 
+*** Starting controller
+c0 
+*** Starting 10 switches
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 ...
+*** Ping: testing ping reachability
+h0 -> h1 h2 h3 h4 h5 h6 h7 h8 h9 
+h1 -> h0 h2 h3 h4 h5 h6 h7 h8 h9 
+h2 -> h0 h1 h3 h4 h5 h6 h7 h8 h9 
+h3 -> h0 h1 h2 h4 h5 h6 h7 h8 h9 
+h4 -> h0 h1 h2 h3 h5 h6 h7 h8 h9 
+h5 -> h0 h1 h2 h3 h4 h6 h7 h8 h9 
+h6 -> h0 h1 h2 h3 h4 h5 h7 h8 h9 
+h7 -> h0 h1 h2 h3 h4 h5 h6 h8 h9 
+h8 -> h0 h1 h2 h3 h4 h5 h6 h7 h9 
+h9 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 
+*** Results: 0% dropped (90/90 received)
+*** Iperf: testing TCP bandwidth between h0 and h9 
+*** Results: ['8.68 Mbits/sec', '11.0 Mbits/sec']
+*** Iperf: testing TCP bandwidth between h0 and h9 
+*** Results: ['8.61 Mbits/sec', '9.37 Mbits/sec']
+*** Iperf: testing TCP bandwidth between h0 and h9 
+*** Results: ['7.55 Mbits/sec', '10.7 Mbits/sec']
+h3: ------------------------------------------------------------
+h3: Client connecting to 10.0.0.7, TCP port 5001
+h3: TCP window size: 0.08 MByte (default)
+h3: ------------------------------------------------------------
+h3: [ 47] local 10.0.0.4 port 54944 connected with 10.0.0.7 port 5001
+h2: ------------------------------------------------------------
+h2: Client connecting to 10.0.0.1, TCP port 5001
+h2: TCP window size: 0.08 MByte (default)
+h2: ------------------------------------------------------------
+h2: [ 47] local 10.0.0.3 port 54852 connected with 10.0.0.1 port 5001
+h9: ------------------------------------------------------------
+h9: Client connecting to 10.0.0.4, TCP port 5001
+h9: TCP window size: 0.08 MByte (default)
+h9: ------------------------------------------------------------
+h9: [ 47] local 10.0.0.10 port 58186 connected with 10.0.0.4 port 5001
+h0: ------------------------------------------------------------
+h0: Client connecting to 10.0.0.9, TCP port 5001
+h0: TCP window size: 0.08 MByte (default)
+h0: ------------------------------------------------------------
+h0: [ 47] local 10.0.0.1 port 49144 connected with 10.0.0.9 port 5001
+h7: ------------------------------------------------------------
+h7: Client connecting to 10.0.0.3, TCP port 5001
+h7: TCP window size: 0.08 MByte (default)
+h7: ------------------------------------------------------------
+h7: [ 47] local 10.0.0.8 port 42450 connected with 10.0.0.3 port 5001
+h8: ------------------------------------------------------------
+h8: Client connecting to 10.0.0.10, TCP port 5001
+h8: TCP window size: 0.08 MByte (default)
+h8: ------------------------------------------------------------
+h8: [ 47] local 10.0.0.9 port 51486 connected with 10.0.0.10 port 5001
+h4: ------------------------------------------------------------
+h4: Client connecting to 10.0.0.6, TCP port 5001
+h4: TCP window size: 0.08 MByte (default)
+h4: ------------------------------------------------------------
+h4: [ 47] local 10.0.0.5 port 51432 connected with 10.0.0.6 port 5001
+h1: ------------------------------------------------------------
+h1: Client connecting to 10.0.0.5, TCP port 5001
+h1: TCP window size: 0.08 MByte (default)
+h1: ------------------------------------------------------------
+h1: [ 47] local 10.0.0.2 port 46920 connected with 10.0.0.5 port 5001
+h5: ------------------------------------------------------------
+h5: Client connecting to 10.0.0.2, TCP port 5001
+h5: TCP window size: 0.08 MByte (default)
+h5: ------------------------------------------------------------
+h6: ------------------------------------------------------------
+h6: Client connecting to 10.0.0.8, TCP port 5001
+h6: TCP window size: 0.08 MByte (default)
+h6: ------------------------------------------------------------
+h6: [ 47] local 10.0.0.7 port 58674 connected with 10.0.0.8 port 5001
+h5: [ 47] local 10.0.0.6 port 35028 connected with 10.0.0.2 port 5001
+h9: [ ID] Interval       Transfer     Bandwidth
+h9: [ 47]  0.0-20.2 sec  7.62 MBytes  3.17 Mbits/sec
+h1: [ ID] Interval       Transfer     Bandwidth
+h1: [ 47]  0.0-20.3 sec  8.25 MBytes  3.40 Mbits/sec
+h5: [ ID] Interval       Transfer     Bandwidth
+h5: [ 47]  0.0-20.8 sec  5.00 MBytes  2.01 Mbits/sec
+h4: [ ID] Interval       Transfer     Bandwidth
+h4: [ 47]  0.0-21.1 sec  10.1 MBytes  4.03 Mbits/sec
+h3: [ ID] Interval       Transfer     Bandwidth
+h3: [ 47]  0.0-22.4 sec  6.12 MBytes  2.30 Mbits/sec
+h8: [ ID] Interval       Transfer     Bandwidth
+h8: [ 47]  0.0-22.3 sec  7.00 MBytes  2.63 Mbits/sec
+h0: [ ID] Interval       Transfer     Bandwidth
+h0: [ 47]  0.0-22.4 sec  5.75 MBytes  2.16 Mbits/sec
+h7: [ ID] Interval       Transfer     Bandwidth
+h7: [ 47]  0.0-23.2 sec  4.62 MBytes  1.67 Mbits/sec
+h2: [ ID] Interval       Transfer     Bandwidth
+h2: [ 47]  0.0-30.4 sec  13.6 MBytes  3.76 Mbits/sec
+h6: [ ID] Interval       Transfer     Bandwidth
+h6: [ 47]  0.0-31.7 sec  5.25 MBytes  1.39 Mbits/sec
+server h1: ------------------------------------------------------------
+server h4: ------------------------------------------------------------
+server h7: ------------------------------------------------------------
+server h2: ------------------------------------------------------------
+server h9: ------------------------------------------------------------
+server h8: ------------------------------------------------------------
+server h3: ------------------------------------------------------------
+server h0: ------------------------------------------------------------
+server h6: ------------------------------------------------------------
+server h5: ------------------------------------------------------------
+server h1: Server listening on TCP port 5001
+server h4: Server listening on TCP port 5001
+server h7: Server listening on TCP port 5001
+server h2: Server listening on TCP port 5001
+server h9: Server listening on TCP port 5001
+server h8: Server listening on TCP port 5001
+server h3: Server listening on TCP port 5001
+server h0: Server listening on TCP port 5001
+server h6: Server listening on TCP port 5001
+server h5: Server listening on TCP port 5001
+server h1: TCP window size: 85.3 KByte (default)
+server h4: TCP window size: 85.3 KByte (default)
+server h7: TCP window size: 85.3 KByte (default)
+server h2: TCP window size: 85.3 KByte (default)
+server h9: TCP window size: 85.3 KByte (default)
+server h8: TCP window size: 85.3 KByte (default)
+server h3: TCP window size: 85.3 KByte (default)
+server h0: TCP window size: 85.3 KByte (default)
+server h6: TCP window size: 85.3 KByte (default)
+server h5: TCP window size: 85.3 KByte (default)
+server h1: ------------------------------------------------------------
+server h4: ------------------------------------------------------------
+server h7: ------------------------------------------------------------
+server h2: ------------------------------------------------------------
+server h9: ------------------------------------------------------------
+server h8: ------------------------------------------------------------
+server h3: ------------------------------------------------------------
+server h0: ------------------------------------------------------------
+server h6: ------------------------------------------------------------
+server h5: ------------------------------------------------------------
+server h1: [ 48] local 10.0.0.2 port 5001 connected with 10.0.0.6 port 35028
+server h4: [ 48] local 10.0.0.5 port 5001 connected with 10.0.0.2 port 46920
+server h7: [ 48] local 10.0.0.8 port 5001 connected with 10.0.0.7 port 58674
+server h2: [ 48] local 10.0.0.3 port 5001 connected with 10.0.0.8 port 42450
+server h9: [ 48] local 10.0.0.10 port 5001 connected with 10.0.0.9 port 51486
+server h8: [ 48] local 10.0.0.9 port 5001 connected with 10.0.0.1 port 49144
+server h3: [ 48] local 10.0.0.4 port 5001 connected with 10.0.0.10 port 58186
+server h0: [ 48] local 10.0.0.1 port 5001 connected with 10.0.0.3 port 54852
+server h6: [ 48] local 10.0.0.7 port 5001 connected with 10.0.0.4 port 54944
+server h5: [ 48] local 10.0.0.6 port 5001 connected with 10.0.0.5 port 51432
+server h4: [ ID] Interval       Transfer     Bandwidth
+server h9: [ ID] Interval       Transfer     Bandwidth
+server h3: [ ID] Interval       Transfer     Bandwidth
+server h6: [ ID] Interval       Transfer     Bandwidth
+server h5: [ ID] Interval       Transfer     Bandwidth
+server h4: [ 48]  0.0-29.9 sec  8.25 MBytes  2.31 Mbits/sec
+server h9: [ 48]  0.0-31.5 sec  7.00 MBytes  1.86 Mbits/sec
+server h3: [ 48]  0.0-30.4 sec  7.62 MBytes  2.10 Mbits/sec
+server h6: [ 48]  0.0-29.8 sec  6.12 MBytes  1.72 Mbits/sec
+server h5: [ 48]  0.0-31.1 sec  10.1 MBytes  2.73 Mbits/sec
+server h1: [ ID] Interval       Transfer     Bandwidth
+server h1: [ 48]  0.0-36.3 sec  5.00 MBytes  1.16 Mbits/sec
+server h8: [ ID] Interval       Transfer     Bandwidth
+server h8: [ 48]  0.0-37.0 sec  5.75 MBytes  1.30 Mbits/sec
+server h7: [ ID] Interval       Transfer     Bandwidth
+server h7: [ 48]  0.0-37.1 sec  5.25 MBytes  1.19 Mbits/sec
+server h2: [ ID] Interval       Transfer     Bandwidth
+server h2: [ 48]  0.0-37.3 sec  4.62 MBytes  1.04 Mbits/sec
+server h0: [ ID] Interval       Transfer     Bandwidth
+server h0: [ 48]  0.0-40.6 sec  13.6 MBytes  2.81 Mbits/sec
+shutting downgot 10 speeds, avg 2.652000 Mbits/s*** Stopping 1 controllers
+c0 
+*** Stopping 30 links
+..............................
+*** Stopping 10 switches
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 
+*** Stopping 10 hosts
+h0 *** gave up after 3 retries

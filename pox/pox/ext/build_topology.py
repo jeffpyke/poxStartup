@@ -64,7 +64,7 @@ def experiment(net):
         net.iperf(seconds = 20)
         net.iperf(seconds = 20)
         net.iperf(seconds = 20)
-        flows = 8
+        flows = 1 
         while any([a == i for i, a in enumerate(assignments)]):
             random.shuffle(assignments)
         for i, h in enumerate(net.hosts):
@@ -73,6 +73,8 @@ def experiment(net):
             cpopens[h] = h.popen('iperf', '-c', other_h.IP(), '-f', 'm', '-P', str(flows), '-t', '20')
         cclosed = 0
         sclosed = 0
+        endtime = time() + 150 # 150 seconds to complete
+
         for h, line in pmonitor(cpopens, timeoutms=10000):
             if h:
                 info('%s: %s' % (h.name, line))
@@ -81,22 +83,30 @@ def experiment(net):
                         speed = float(line.split()[-2])
                         speeds.append(speed)
                         cclosed += 1
+            if time() > endtime:
+                for p in cpopens.values():
+                    p.send_signal(SIGINT)
             if cclosed == N*(flows): # +1 for the sum equation
               for p in cpopens.values():
                 p.send_signal(SIGINT)
-
         for h, line in pmonitor(spopens, timeoutms=10000):
             if h:
                 info('server %s: %s' % (h.name, line))
                 if 'bits/sec' in line and 'SUM' not in line:
                   sclosed += 1
+            if time() > endtime:
+                for p in spopens.values():
+                    p.send_signal(SIGINT)
             if sclosed == N*(flows):
                 info("shutting down")
                 for p in spopens.values():
                     p.send_signal(SIGINT)
 
         # CLI(net)
-        info("got %d speeds, avg %f Mbits/s" % (len(speeds), float(sum(speeds)) / len(speeds)))
+        info("\n")
+        info(speeds)
+        info("\n")
+        info("got %d speeds, avg %f Mbits/s" % (len(speeds), flows*float(sum(speeds)) / len(speeds)))
         net.stop()
 
 def main():

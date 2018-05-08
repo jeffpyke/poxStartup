@@ -82,6 +82,7 @@ class Tutorial (object):
 
   def add_entry(self, src_hwaddr, dst_hwaddr, path, S):
     for i in range(1, len(path)-1):
+      # hardware routing using fixed routing tables
       # msg = of.ofp_flow_mod()
       # msg.match.dl_src = EthAddr(src_hwaddr)
       # msg.match.dl_dst = EthAddr(dst_hwaddr)
@@ -159,7 +160,7 @@ class Tutorial (object):
         # log.error(dst)
         # log.error(in_port)
         # log.error(out_port)
-        log.error('%s %s %d %d'%(str(src), str(dst), in_port, out_port))
+        # log.error('%s %s %d %d'%(str(src), str(dst), in_port, out_port))
         self.resend_packet(packet_in, out_port)
 
 
