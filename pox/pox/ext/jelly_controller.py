@@ -26,6 +26,7 @@ import pox.openflow.libopenflow_01 as of
 from pox.lib.addresses import EthAddr
 import networkx as nx
 import random
+from itertools import islice
 
 log = core.getLogger()
 
@@ -46,9 +47,11 @@ class Tutorial (object):
     # which switch port (keys are MACs, values are ports).
     self.mac_to_port = {}
 
-    S = 10 
-    N = 3
-    r = 2
+    S = 68
+    N = 22
+    r = 3
+
+    k = 8
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
@@ -64,16 +67,12 @@ class Tutorial (object):
           path = [src_switch]
         else:
           # path = [src_switch, dst_switch] # path to go from src to dst
-          paths = []
-          for p in nx.all_shortest_paths(rrg, src_switch, dst_switch):
-            paths.append(p)
-          log.error('SRC: %d, DST: %d'%(i, j,))
-          log.error(paths)
+          path = random.sample(list(islice(nx.shortest_simple_paths(rrg, src_switch, dst_switch), k)), 1)[0]
+#log.error('SRC: %d, DST: %d'%(i, j,))
           # select a random path to send traffic from
-          path = random.sample(paths,1)[0]
-          log.error(path)
-          log.error('PATH LEN: %d'%(len(path)))
-          log.error('\n')
+#          log.error(path)
+#         log.error('PATH LEN: %d'%(len(path)))
+#         log.error('\n')
         self.add_entry(src_hwaddr, dst_hwaddr, [i] + path + [j], S)
 
   def add_entry(self, src_hwaddr, dst_hwaddr, path, S):
