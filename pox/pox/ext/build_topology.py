@@ -64,7 +64,7 @@ def experiment(net):
         net.iperf(seconds = 20)
         net.iperf(seconds = 20)
         net.iperf(seconds = 20)
-        flows = 1 
+        flows = 1
         while any([a == i for i, a in enumerate(assignments)]):
             random.shuffle(assignments)
         for i, h in enumerate(net.hosts):
@@ -84,17 +84,19 @@ def experiment(net):
                         speeds.append(speed)
                         cclosed += 1
             if time() > endtime:
+                # info("timeout kill")
                 for p in cpopens.values():
                     p.send_signal(SIGINT)
             if cclosed == N*(flows): # +1 for the sum equation
-              for p in cpopens.values():
-                p.send_signal(SIGINT)
+                for p in cpopens.values():
+                    p.send_signal(SIGINT)
         for h, line in pmonitor(spopens, timeoutms=10000):
             if h:
                 info('server %s: %s' % (h.name, line))
                 if 'bits/sec' in line and 'SUM' not in line:
                   sclosed += 1
             if time() > endtime:
+                # info("timeout kill")
                 for p in spopens.values():
                     p.send_signal(SIGINT)
             if sclosed == N*(flows):

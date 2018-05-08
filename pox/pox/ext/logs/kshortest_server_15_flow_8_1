@@ -1,0 +1,703 @@
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+*** Adding switches:
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 
+*** Adding links:
+(h0, s0) (h1, s1) (h2, s2) (h3, s3) (h4, s4) (h5, s5) (h6, s6) (h7, s7) (h8, s8) (h9, s9) (h10, s10) (h11, s11) (h12, s12) (h13, s13) (h14, s14) (s0, s2) (s0, s3) (s0, s11) (s0, s12) (s1, s4) (s1, s5) (s1, s6) (s1, s14) (s2, s3) (s2, s10) (s2, s12) (s3, s4) (s3, s5) (s4, s9) (s4, s14) (s5, s8) (s5, s12) (s6, s10) (s6, s12) (s6, s13) (s7, s10) (s7, s11) (s7, s13) (s7, s14) (s8, s9) (s8, s11) (s8, s13) (s9, s11) (s9, s13) (s10, s14) 
+*** Configuring hosts
+h0 (cfs -1/100000us) h1 (cfs -1/100000us) h2 (cfs -1/100000us) h3 (cfs -1/100000us) h4 (cfs -1/100000us) h5 (cfs -1/100000us) h6 (cfs -1/100000us) h7 (cfs -1/100000us) h8 (cfs -1/100000us) h9 (cfs -1/100000us) h10 (cfs -1/100000us) h11 (cfs -1/100000us) h12 (cfs -1/100000us) h13 (cfs -1/100000us) h14 (cfs -1/100000us) 
+*** Starting controller
+c0 
+*** Starting 15 switches
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 ...
+*** Ping: testing ping reachability
+h0 -> h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+h1 -> h0 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+h2 -> h0 h1 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+h3 -> h0 h1 h2 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+h4 -> h0 h1 h2 h3 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+h5 -> h0 h1 h2 h3 h4 h6 h7 h8 h9 h10 h11 h12 h13 h14 
+h6 -> h0 h1 h2 h3 h4 h5 h7 h8 h9 h10 h11 h12 h13 h14 
+h7 -> h0 h1 h2 h3 h4 h5 h6 h8 h9 h10 h11 h12 h13 h14 
+h8 -> h0 h1 h2 h3 h4 h5 h6 h7 h9 h10 h11 h12 h13 h14 
+h9 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 h10 h11 h12 h13 h14 
+h10 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h11 h12 h13 h14 
+h11 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h12 h13 h14 
+h12 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h13 h14 
+h13 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h14 
+h14 -> h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 
+*** Results: 0% dropped (210/210 received)
+*** Iperf: testing TCP bandwidth between h0 and h14 
+*** Results: ['7.03 Mbits/sec', '8.07 Mbits/sec']
+*** Iperf: testing TCP bandwidth between h0 and h14 
+*** Results: ['5.95 Mbits/sec', '8.32 Mbits/sec']
+*** Iperf: testing TCP bandwidth between h0 and h14 
+*** Results: ['7.68 Mbits/sec', '8.04 Mbits/sec']
+h13: ------------------------------------------------------------
+h13: Client connecting to 10.0.0.7, TCP port 5001
+h13: TCP window size: 0.08 MByte (default)
+h13: ------------------------------------------------------------
+h13: [ 67] local 10.0.0.14 port 40672 connected with 10.0.0.7 port 5001
+h13: [ 73] local 10.0.0.14 port 40712 connected with 10.0.0.7 port 5001
+h13: [ 71] local 10.0.0.14 port 40694 connected with 10.0.0.7 port 5001
+h7: ------------------------------------------------------------
+h13: [ 68] local 10.0.0.14 port 40680 connected with 10.0.0.7 port 5001
+h7: Client connecting to 10.0.0.11, TCP port 5001
+h13: [ 72] local 10.0.0.14 port 40702 connected with 10.0.0.7 port 5001
+h7: TCP window size: 0.08 MByte (default)
+h7: ------------------------------------------------------------
+h0: ------------------------------------------------------------
+h0: Client connecting to 10.0.0.12, TCP port 5001
+h0: TCP window size: 0.08 MByte (default)
+h0: ------------------------------------------------------------
+h13: [ 74] local 10.0.0.14 port 40718 connected with 10.0.0.7 port 5001
+h13: [ 70] local 10.0.0.14 port 40686 connected with 10.0.0.7 port 5001
+h13: [ 69] local 10.0.0.14 port 40682 connected with 10.0.0.7 port 5001
+h1: ------------------------------------------------------------
+h1: Client connecting to 10.0.0.4, TCP port 5001
+h1: TCP window size: 0.08 MByte (default)
+h1: ------------------------------------------------------------
+h4: ------------------------------------------------------------
+h4: Client connecting to 10.0.0.9, TCP port 5001
+h4: TCP window size: 0.08 MByte (default)
+h4: ------------------------------------------------------------
+h3: ------------------------------------------------------------
+h3: Client connecting to 10.0.0.14, TCP port 5001
+h3: TCP window size: 0.08 MByte (default)
+h3: ------------------------------------------------------------
+h11: ------------------------------------------------------------
+h11: Client connecting to 10.0.0.2, TCP port 5001
+h11: TCP window size: 0.08 MByte (default)
+h11: ------------------------------------------------------------
+h6: ------------------------------------------------------------
+h6: Client connecting to 10.0.0.5, TCP port 5001
+h6: TCP window size: 0.08 MByte (default)
+h6: ------------------------------------------------------------
+h6: [ 68] local 10.0.0.7 port 59598 connected with 10.0.0.5 port 5001
+h6: [ 70] local 10.0.0.7 port 59608 connected with 10.0.0.5 port 5001
+h6: [ 72] local 10.0.0.7 port 59620 connected with 10.0.0.5 port 5001
+h6: [ 74] local 10.0.0.7 port 59632 connected with 10.0.0.5 port 5001
+h6: [ 69] local 10.0.0.7 port 59604 connected with 10.0.0.5 port 5001
+h6: [ 71] local 10.0.0.7 port 59612 connected with 10.0.0.5 port 5001
+h6: [ 73] local 10.0.0.7 port 59626 connected with 10.0.0.5 port 5001
+h6: [ 67] local 10.0.0.7 port 59538 connected with 10.0.0.5 port 5001
+h14: ------------------------------------------------------------
+h14: Client connecting to 10.0.0.6, TCP port 5001
+h14: TCP window size: 0.08 MByte (default)
+h14: ------------------------------------------------------------
+h2: ------------------------------------------------------------
+h2: Client connecting to 10.0.0.8, TCP port 5001
+h2: TCP window size: 0.08 MByte (default)
+h2: ------------------------------------------------------------
+h2: [ 68] local 10.0.0.3 port 35964 connected with 10.0.0.8 port 5001
+h1: [ 71] local 10.0.0.2 port 60698 connected with 10.0.0.4 port 5001
+h2: [ 73] local 10.0.0.3 port 36010 connected with 10.0.0.8 port 5001
+h4: [ 71] local 10.0.0.5 port 40644 connected with 10.0.0.9 port 5001
+h4: [ 67] local 10.0.0.5 port 40620 connected with 10.0.0.9 port 5001
+h4: [ 73] local 10.0.0.5 port 40660 connected with 10.0.0.9 port 5001
+h3: [ 67] local 10.0.0.4 port 57972 connected with 10.0.0.14 port 5001
+h11: [ 67] local 10.0.0.12 port 36866 connected with 10.0.0.2 port 5001
+h11: [ 69] local 10.0.0.12 port 36870 connected with 10.0.0.2 port 5001
+h2: [ 70] local 10.0.0.3 port 35982 connected with 10.0.0.8 port 5001
+h2: [ 67] local 10.0.0.3 port 35956 connected with 10.0.0.8 port 5001
+h2: [ 72] local 10.0.0.3 port 35994 connected with 10.0.0.8 port 5001
+h2: [ 71] local 10.0.0.3 port 35988 connected with 10.0.0.8 port 5001
+h2: [ 74] local 10.0.0.3 port 36018 connected with 10.0.0.8 port 5001
+h2: [ 69] local 10.0.0.3 port 35974 connected with 10.0.0.8 port 5001
+h1: [ 69] local 10.0.0.2 port 60694 connected with 10.0.0.4 port 5001
+h1: [ 68] local 10.0.0.2 port 60690 connected with 10.0.0.4 port 5001
+h1: [ 70] local 10.0.0.2 port 60696 connected with 10.0.0.4 port 5001
+h4: [ 72] local 10.0.0.5 port 40648 connected with 10.0.0.9 port 5001
+h1: [ 74] local 10.0.0.2 port 60704 connected with 10.0.0.4 port 5001
+h4: [ 69] local 10.0.0.5 port 40632 connected with 10.0.0.9 port 5001
+h1: [ 67] local 10.0.0.2 port 60688 connected with 10.0.0.4 port 5001
+h4: [ 68] local 10.0.0.5 port 40626 connected with 10.0.0.9 port 5001
+h1: [ 72] local 10.0.0.2 port 60700 connected with 10.0.0.4 port 5001
+h4: [ 74] local 10.0.0.5 port 40666 connected with 10.0.0.9 port 5001
+h1: [ 73] local 10.0.0.2 port 60702 connected with 10.0.0.4 port 5001
+h4: [ 70] local 10.0.0.5 port 40636 connected with 10.0.0.9 port 5001
+h3: [ 69] local 10.0.0.4 port 57976 connected with 10.0.0.14 port 5001
+h3: [ 72] local 10.0.0.4 port 57982 connected with 10.0.0.14 port 5001
+h3: [ 70] local 10.0.0.4 port 57978 connected with 10.0.0.14 port 5001
+h3: [ 73] local 10.0.0.4 port 57986 connected with 10.0.0.14 port 5001
+h3: [ 68] local 10.0.0.4 port 57970 connected with 10.0.0.14 port 5001
+h3: [ 74] local 10.0.0.4 port 57988 connected with 10.0.0.14 port 5001
+h3: [ 71] local 10.0.0.4 port 57980 connected with 10.0.0.14 port 5001
+h10: ------------------------------------------------------------
+h10: Client connecting to 10.0.0.10, TCP port 5001
+h10: TCP window size: 0.08 MByte (default)
+h10: ------------------------------------------------------------
+h11: [ 73] local 10.0.0.12 port 36882 connected with 10.0.0.2 port 5001
+h11: [ 68] local 10.0.0.12 port 36868 connected with 10.0.0.2 port 5001
+h11: [ 70] local 10.0.0.12 port 36872 connected with 10.0.0.2 port 5001
+h11: [ 71] local 10.0.0.12 port 36876 connected with 10.0.0.2 port 5001
+h11: [ 72] local 10.0.0.12 port 36880 connected with 10.0.0.2 port 5001
+h11: [ 74] local 10.0.0.12 port 36886 connected with 10.0.0.2 port 5001
+h7: [ 71] local 10.0.0.8 port 57778 connected with 10.0.0.11 port 5001
+h7: [ 73] local 10.0.0.8 port 57782 connected with 10.0.0.11 port 5001
+h7: [ 67] local 10.0.0.8 port 57756 connected with 10.0.0.11 port 5001
+h7: [ 69] local 10.0.0.8 port 57768 connected with 10.0.0.11 port 5001
+h7: [ 74] local 10.0.0.8 port 57786 connected with 10.0.0.11 port 5001
+h7: [ 70] local 10.0.0.8 port 57772 connected with 10.0.0.11 port 5001
+h7: [ 68] local 10.0.0.8 port 57760 connected with 10.0.0.11 port 5001
+h7: [ 72] local 10.0.0.8 port 57784 connected with 10.0.0.11 port 5001
+h14: [ 71] local 10.0.0.15 port 47666 connected with 10.0.0.6 port 5001
+h12: ------------------------------------------------------------
+h12: Client connecting to 10.0.0.3, TCP port 5001
+h12: TCP window size: 0.08 MByte (default)
+h12: ------------------------------------------------------------
+h8: ------------------------------------------------------------
+h0: [ 72] local 10.0.0.1 port 35138 connected with 10.0.0.12 port 5001
+h8: Client connecting to 10.0.0.13, TCP port 5001
+h0: [ 69] local 10.0.0.1 port 35130 connected with 10.0.0.12 port 5001
+h8: TCP window size: 0.08 MByte (default)
+h8: ------------------------------------------------------------
+h14: [ 69] local 10.0.0.15 port 47662 connected with 10.0.0.6 port 5001
+h14: [ 72] local 10.0.0.15 port 47668 connected with 10.0.0.6 port 5001
+h14: [ 73] local 10.0.0.15 port 47670 connected with 10.0.0.6 port 5001
+h14: [ 70] local 10.0.0.15 port 47664 connected with 10.0.0.6 port 5001
+h14: [ 68] local 10.0.0.15 port 47658 connected with 10.0.0.6 port 5001
+h14: [ 67] local 10.0.0.15 port 47654 connected with 10.0.0.6 port 5001
+h14: [ 74] local 10.0.0.15 port 47672 connected with 10.0.0.6 port 5001
+h0: [ 71] local 10.0.0.1 port 35136 connected with 10.0.0.12 port 5001
+h0: [ 70] local 10.0.0.1 port 35134 connected with 10.0.0.12 port 5001
+h0: [ 73] local 10.0.0.1 port 35142 connected with 10.0.0.12 port 5001
+h0: [ 74] local 10.0.0.1 port 35146 connected with 10.0.0.12 port 5001
+h0: [ 68] local 10.0.0.1 port 35128 connected with 10.0.0.12 port 5001
+h0: [ 67] local 10.0.0.1 port 35124 connected with 10.0.0.12 port 5001
+h5: ------------------------------------------------------------
+h5: Client connecting to 10.0.0.1, TCP port 5001
+h5: TCP window size: 0.08 MByte (default)
+h5: ------------------------------------------------------------
+h5: [ 72] local 10.0.0.6 port 49146 connected with 10.0.0.1 port 5001
+h5: [ 67] local 10.0.0.6 port 49090 connected with 10.0.0.1 port 5001
+h5: [ 73] local 10.0.0.6 port 49152 connected with 10.0.0.1 port 5001
+h5: [ 74] local 10.0.0.6 port 49158 connected with 10.0.0.1 port 5001
+h5: [ 71] local 10.0.0.6 port 49140 connected with 10.0.0.1 port 5001
+h5: [ 70] local 10.0.0.6 port 49132 connected with 10.0.0.1 port 5001
+h5: [ 68] local 10.0.0.6 port 49106 connected with 10.0.0.1 port 5001
+h5: [ 69] local 10.0.0.6 port 49124 connected with 10.0.0.1 port 5001
+h9: ------------------------------------------------------------
+h9: Client connecting to 10.0.0.15, TCP port 5001
+h9: TCP window size: 0.08 MByte (default)
+h9: ------------------------------------------------------------
+h9: [ 69] local 10.0.0.10 port 59758 connected with 10.0.0.15 port 5001
+h9: [ 68] local 10.0.0.10 port 59748 connected with 10.0.0.15 port 5001
+h9: [ 67] local 10.0.0.10 port 59752 connected with 10.0.0.15 port 5001
+h9: [ 73] local 10.0.0.10 port 59796 connected with 10.0.0.15 port 5001
+h9: [ 74] local 10.0.0.10 port 59798 connected with 10.0.0.15 port 5001
+h9: [ 70] local 10.0.0.10 port 59792 connected with 10.0.0.15 port 5001
+h9: [ 72] local 10.0.0.10 port 59794 connected with 10.0.0.15 port 5001
+h9: [ 71] local 10.0.0.10 port 59762 connected with 10.0.0.15 port 5001
+h8: [ 70] local 10.0.0.9 port 39738 connected with 10.0.0.13 port 5001
+h8: [ 69] local 10.0.0.9 port 39730 connected with 10.0.0.13 port 5001
+h8: [ 73] local 10.0.0.9 port 39754 connected with 10.0.0.13 port 5001
+h8: [ 71] local 10.0.0.9 port 39744 connected with 10.0.0.13 port 5001
+h8: [ 74] local 10.0.0.9 port 39758 connected with 10.0.0.13 port 5001
+h8: [ 67] local 10.0.0.9 port 39712 connected with 10.0.0.13 port 5001
+h8: [ 68] local 10.0.0.9 port 39722 connected with 10.0.0.13 port 5001
+h8: [ 72] local 10.0.0.9 port 39750 connected with 10.0.0.13 port 5001
+h12: [ 68] local 10.0.0.13 port 56218 connected with 10.0.0.3 port 5001
+h12: [ 71] local 10.0.0.13 port 56228 connected with 10.0.0.3 port 5001
+h12: [ 69] local 10.0.0.13 port 56220 connected with 10.0.0.3 port 5001
+h12: [ 72] local 10.0.0.13 port 56256 connected with 10.0.0.3 port 5001
+h12: [ 74] local 10.0.0.13 port 56260 connected with 10.0.0.3 port 5001
+h12: [ 73] local 10.0.0.13 port 56252 connected with 10.0.0.3 port 5001
+h12: [ 67] local 10.0.0.13 port 56216 connected with 10.0.0.3 port 5001
+h12: [ 70] local 10.0.0.13 port 56224 connected with 10.0.0.3 port 5001
+h10: [ 73] local 10.0.0.11 port 34096 connected with 10.0.0.10 port 5001
+h10: [ 68] local 10.0.0.11 port 34044 connected with 10.0.0.10 port 5001
+h10: [ 70] local 10.0.0.11 port 34088 connected with 10.0.0.10 port 5001
+h10: [ 67] local 10.0.0.11 port 34080 connected with 10.0.0.10 port 5001
+h10: [ 71] local 10.0.0.11 port 34092 connected with 10.0.0.10 port 5001
+h10: [ 69] local 10.0.0.11 port 34084 connected with 10.0.0.10 port 5001
+h10: [ 74] local 10.0.0.11 port 34098 connected with 10.0.0.10 port 5001
+h10: [ 72] local 10.0.0.11 port 34094 connected with 10.0.0.10 port 5001
+h4: [ ID] Interval       Transfer     Bandwidth
+h4: [ 72]  0.0-19.9 sec  0.75 MBytes  0.32 Mbits/sec
+h7: [ ID] Interval       Transfer     Bandwidth
+h7: [ 70]  0.0-19.9 sec  17592186044415 MBytes  7408687626561 Mbits/sec
+h1: [ ID] Interval       Transfer     Bandwidth
+h1: [ 71]  0.0-20.0 sec  17592186044415 MBytes  7378139473232 Mbits/sec
+h4: [ 70]  0.0-20.0 sec  17592186044415 MBytes  7375407460215 Mbits/sec
+h12: [ ID] Interval       Transfer     Bandwidth
+h12: [ 72]  0.0-19.8 sec  17592186044415 MBytes  7445199266108 Mbits/sec
+h14: [ ID] Interval       Transfer     Bandwidth
+h14: [ 71]  0.0-20.0 sec  17592186044415 MBytes  7375473072656 Mbits/sec
+h5: [ ID] Interval       Transfer     Bandwidth
+h5: [ 69]  0.0-20.0 sec  17592186044415 MBytes  7376948554981 Mbits/sec
+h9: [ ID] Interval       Transfer     Bandwidth
+h9: [ 73]  0.0-20.0 sec  17592186044415 MBytes  7376412416917 Mbits/sec
+h8: [ ID] Interval       Transfer     Bandwidth
+h8: [ 70]  0.0-20.0 sec  17592186044415 MBytes  7375721157210 Mbits/sec
+h10: [ ID] Interval       Transfer     Bandwidth
+h10: [ 69]  0.0-19.9 sec  17592186044415 MBytes  7414400563236 Mbits/sec
+h10: [ 74]  0.0-19.9 sec  0.75 MBytes  0.32 Mbits/sec
+h4: [ 67]  0.0-20.5 sec  0.75 MBytes  0.31 Mbits/sec
+h9: [ 68]  0.0-20.4 sec  1.00 MBytes  0.41 Mbits/sec
+h12: [ 68]  0.0-20.5 sec  1.00 MBytes  0.41 Mbits/sec
+h3: [ ID] Interval       Transfer     Bandwidth
+h3: [ 70]  0.0-21.1 sec  0.75 MBytes  0.30 Mbits/sec
+h7: [ 71]  0.0-21.2 sec  1.00 MBytes  0.40 Mbits/sec
+h4: [ 71]  0.0-21.4 sec  1.25 MBytes  0.49 Mbits/sec
+h4: [ 74]  0.0-21.7 sec  0.88 MBytes  0.34 Mbits/sec
+h3: [ 73]  0.0-21.9 sec  0.75 MBytes  0.29 Mbits/sec
+h3: [ 68]  0.0-21.9 sec  0.88 MBytes  0.33 Mbits/sec
+h2: [ ID] Interval       Transfer     Bandwidth
+h2: [ 69]  0.0-22.1 sec  0.88 MBytes  0.33 Mbits/sec
+h12: [ 74]  0.0-22.3 sec  1.12 MBytes  0.42 Mbits/sec
+h2: [ 72]  0.0-23.1 sec  0.75 MBytes  0.27 Mbits/sec
+h8: [ 68]  0.0-23.1 sec  0.38 MBytes  0.14 Mbits/sec
+h13: [ ID] Interval       Transfer     Bandwidth
+h13: [ 72]  0.0-23.5 sec  0.62 MBytes  0.22 Mbits/sec
+h14: [ 68]  0.0-23.5 sec  0.50 MBytes  0.18 Mbits/sec
+h12: [ 69]  0.0-23.4 sec  1.00 MBytes  0.36 Mbits/sec
+h8: [ 71]  0.0-23.6 sec  0.50 MBytes  0.18 Mbits/sec
+h4: [ 69]  0.0-24.2 sec  1.00 MBytes  0.35 Mbits/sec
+h8: [ 74]  0.0-24.7 sec  0.75 MBytes  0.26 Mbits/sec
+h1: [ 68]  0.0-24.9 sec  1.25 MBytes  0.42 Mbits/sec
+h7: [ 67]  0.0-25.1 sec  0.50 MBytes  0.17 Mbits/sec
+h9: [ 71]  0.0-25.0 sec  1.12 MBytes  0.38 Mbits/sec
+h7: [ 68]  0.0-25.3 sec  0.25 MBytes  0.08 Mbits/sec
+h10: [ 68]  0.0-25.0 sec  1.12 MBytes  0.38 Mbits/sec
+h9: [ 67]  0.0-25.4 sec  0.75 MBytes  0.25 Mbits/sec
+h4: [ 68]  0.0-26.0 sec  1.25 MBytes  0.40 Mbits/sec
+h1: [ 74]  0.0-26.3 sec  1.88 MBytes  0.60 Mbits/sec
+h8: [ 73]  0.0-26.3 sec  0.50 MBytes  0.16 Mbits/sec
+h9: [ 69]  0.0-26.7 sec  0.38 MBytes  0.12 Mbits/sec
+h13: [ 73]  0.0-27.2 sec  0.62 MBytes  0.19 Mbits/sec
+h14: [ 67]  0.0-27.5 sec  0.50 MBytes  0.15 Mbits/sec
+h12: [ 67]  0.0-27.4 sec  0.88 MBytes  0.27 Mbits/sec
+h7: [ 72]  0.0-27.9 sec  1.00 MBytes  0.30 Mbits/sec
+h6: [ ID] Interval       Transfer     Bandwidth
+h6: [ 70]  0.0-29.1 sec  0.50 MBytes  0.14 Mbits/sec
+h6: [ 73]  0.0-29.1 sec  0.50 MBytes  0.14 Mbits/sec
+h11: [ ID] Interval       Transfer     Bandwidth
+h11: [ 67]  0.0-29.4 sec  0.62 MBytes  0.18 Mbits/sec
+h13: [ 70]  0.0-29.5 sec  0.50 MBytes  0.14 Mbits/sec
+h3: [ 71]  0.0-30.2 sec  1.00 MBytes  0.28 Mbits/sec
+h6: [ 71]  0.0-30.2 sec  0.50 MBytes  0.14 Mbits/sec
+h11: [ 73]  0.0-30.6 sec  0.62 MBytes  0.17 Mbits/sec
+h0: [ ID] Interval       Transfer     Bandwidth
+h0: [ 72]  0.0-30.7 sec  0.38 MBytes  0.10 Mbits/sec
+h0: [ 69]  0.0-30.8 sec  0.50 MBytes  0.14 Mbits/sec
+h11: [ 70]  0.0-31.0 sec  0.50 MBytes  0.14 Mbits/sec
+h9: [ 72]  0.0-31.0 sec  1.00 MBytes  0.27 Mbits/sec
+h13: [ 68]  0.0-31.7 sec  0.62 MBytes  0.17 Mbits/sec
+h3: [ 74]  0.0-32.0 sec  0.62 MBytes  0.16 Mbits/sec
+h14: [ 72]  0.0-32.9 sec  0.50 MBytes  0.13 Mbits/sec
+h3: [ 69]  0.0-33.0 sec  0.38 MBytes  0.10 Mbits/sec
+h0: [ 71]  0.0-33.1 sec  0.62 MBytes  0.16 Mbits/sec
+h6: [ 69]  0.0-33.6 sec  0.50 MBytes  0.12 Mbits/sec
+h10: [ 70]  0.0-33.2 sec  0.62 MBytes  0.16 Mbits/sec
+h7: [ 69]  0.0-35.2 sec  0.88 MBytes  0.21 Mbits/sec
+h2: [ 70]  0.0-35.3 sec  1.00 MBytes  0.24 Mbits/sec
+h12: [ 71]  0.0-35.5 sec  0.62 MBytes  0.15 Mbits/sec
+h8: [ 72]  0.0-35.6 sec  0.50 MBytes  0.12 Mbits/sec
+h14: [ 73]  0.0-35.8 sec  0.38 MBytes  0.09 Mbits/sec
+h14: [ 70]  0.0-35.8 sec  0.50 MBytes  0.12 Mbits/sec
+h10: [ 71]  0.0-35.9 sec  1.00 MBytes  0.23 Mbits/sec
+h1: [ 73]  0.0-36.4 sec  1.25 MBytes  0.29 Mbits/sec
+h13: [ 71]  0.0-37.3 sec  0.62 MBytes  0.14 Mbits/sec
+h12: [ 70]  0.0-37.4 sec  0.38 MBytes  0.08 Mbits/sec
+h8: [ 69]  0.0-37.5 sec  0.50 MBytes  0.11 Mbits/sec
+h13: [ 74]  0.0-38.0 sec  0.50 MBytes  0.11 Mbits/sec
+h8: [ 67]  0.0-37.9 sec  0.50 MBytes  0.11 Mbits/sec
+h8: [SUM]  0.0-37.9 sec  2.49 MBytes  0.55 Mbits/sec
+h0: [ 67]  0.0-38.1 sec  0.50 MBytes  0.11 Mbits/sec
+h13: [ 67]  0.0-39.0 sec  0.50 MBytes  0.11 Mbits/sec
+h11: [ 68]  0.0-39.0 sec  0.62 MBytes  0.13 Mbits/sec
+h2: [ 67]  0.0-39.3 sec  0.62 MBytes  0.13 Mbits/sec
+h2: [ 71]  0.0-39.3 sec  1.12 MBytes  0.24 Mbits/sec
+h10: [ 72]  0.0-39.1 sec  0.38 MBytes  0.08 Mbits/sec
+h4: [ 73]  0.0-40.7 sec  1.25 MBytes  0.26 Mbits/sec
+h4: [SUM]  0.0-40.7 sec  6.00 MBytes  1.24 Mbits/sec
+h5: [ 73]  0.0-40.7 sec  0.50 MBytes  0.10 Mbits/sec
+h11: [ 69]  0.0-41.9 sec  0.62 MBytes  0.13 Mbits/sec
+h11: [ 71]  0.0-41.9 sec  0.62 MBytes  0.13 Mbits/sec
+h5: [ 67]  0.0-41.9 sec  0.62 MBytes  0.13 Mbits/sec
+h5: [ 68]  0.0-42.6 sec  0.62 MBytes  0.12 Mbits/sec
+h9: [ 70]  0.0-42.6 sec  0.38 MBytes  0.07 Mbits/sec
+h7: [ 74]  0.0-43.1 sec  0.38 MBytes  0.07 Mbits/sec
+h11: [ 72]  0.0-43.4 sec  0.75 MBytes  0.14 Mbits/sec
+h5: [ 70]  0.0-44.8 sec  0.50 MBytes  0.09 Mbits/sec
+h9: [ 74]  0.0-46.0 sec  0.88 MBytes  0.16 Mbits/sec
+h9: [SUM]  0.0-46.0 sec  4.35 MBytes  0.79 Mbits/sec
+h1: [ 67]  0.0-48.3 sec  0.88 MBytes  0.15 Mbits/sec
+h0: [ 74]  0.0-48.5 sec  0.50 MBytes  0.09 Mbits/sec
+h5: [ 71]  0.0-48.6 sec  0.50 MBytes  0.09 Mbits/sec
+h5: [ 74]  0.0-49.3 sec  0.50 MBytes  0.09 Mbits/sec
+h1: [ 69]  0.0-49.7 sec  1.62 MBytes  0.27 Mbits/sec
+h10: [ 67]  0.0-49.4 sec  0.50 MBytes  0.08 Mbits/sec
+h0: [ 68]  0.0-52.0 sec  0.38 MBytes  0.06 Mbits/sec
+h6: [ 67]  0.0-52.6 sec  0.50 MBytes  0.08 Mbits/sec
+h6: [ 72]  0.0-53.1 sec  0.62 MBytes  0.10 Mbits/sec
+h10: [ 73]  0.0-54.6 sec  0.62 MBytes  0.10 Mbits/sec
+h10: [SUM]  0.0-54.6 sec  3.87 MBytes  0.59 Mbits/sec
+h3: [ 72]  0.0-56.0 sec  0.88 MBytes  0.13 Mbits/sec
+h6: [ 74]  0.0-58.4 sec  0.38 MBytes  0.05 Mbits/sec
+h13: [ 69]  0.0-60.2 sec  0.62 MBytes  0.09 Mbits/sec
+h13: [SUM]  0.0-60.2 sec  4.62 MBytes  0.64 Mbits/sec
+h12: [ 73]  0.0-61.1 sec  1.38 MBytes  0.19 Mbits/sec
+h12: [SUM]  0.0-61.1 sec  5.17 MBytes  0.71 Mbits/sec
+h14: [ 69]  0.0-62.0 sec  0.38 MBytes  0.05 Mbits/sec
+h2: [ 73]  0.0-64.7 sec  0.50 MBytes  0.06 Mbits/sec
+h3: [ 67]  0.0-66.1 sec  0.38 MBytes  0.05 Mbits/sec
+h3: [SUM]  0.0-66.1 sec  5.62 MBytes  0.71 Mbits/sec
+h6: [ 68]  0.0-67.9 sec  0.50 MBytes  0.06 Mbits/sec
+h6: [SUM]  0.0-67.9 sec  4.00 MBytes  0.49 Mbits/sec
+h7: [ 73]  0.0-68.2 sec  0.38 MBytes  0.05 Mbits/sec
+h7: [SUM]  0.0-68.2 sec  3.18 MBytes  0.39 Mbits/sec
+h11: [ 74]  0.0-70.5 sec  0.62 MBytes  0.07 Mbits/sec
+h11: [SUM]  0.0-70.5 sec  5.00 MBytes  0.59 Mbits/sec
+h1: [ 70]  0.0-71.7 sec  1.12 MBytes  0.13 Mbits/sec
+h0: [ 70]  0.0-71.7 sec  0.50 MBytes  0.06 Mbits/sec
+h2: [ 68]  0.0-72.1 sec  0.38 MBytes  0.04 Mbits/sec
+h0: [ 73]  0.0-75.4 sec  0.75 MBytes  0.08 Mbits/sec
+h0: [SUM]  0.0-75.4 sec  4.12 MBytes  0.46 Mbits/sec
+h2: [ 74]  0.0-84.7 sec  1.38 MBytes  0.14 Mbits/sec
+h2: [SUM]  0.0-84.7 sec  6.62 MBytes  0.66 Mbits/sec
+h1: [ 72]  0.0-88.8 sec  0.50 MBytes  0.05 Mbits/sec
+h1: [SUM]  0.0-88.8 sec  7.35 MBytes  0.69 Mbits/sec
+timeout killtimeout killserver h12: ------------------------------------------------------------
+timeout killserver h2: ------------------------------------------------------------
+timeout killserver h14: ------------------------------------------------------------
+timeout killserver h0: ------------------------------------------------------------
+timeout killserver h11: ------------------------------------------------------------
+timeout killserver h7: ------------------------------------------------------------
+timeout killserver h13: ------------------------------------------------------------
+timeout killserver h1: ------------------------------------------------------------
+timeout killserver h8: ------------------------------------------------------------
+timeout killserver h5: ------------------------------------------------------------
+timeout killserver h6: ------------------------------------------------------------
+timeout killserver h4: ------------------------------------------------------------
+timeout killserver h3: ------------------------------------------------------------
+timeout killserver h10: ------------------------------------------------------------
+timeout killserver h9: ------------------------------------------------------------
+timeout killserver h12: Server listening on TCP port 5001
+timeout killserver h2: Server listening on TCP port 5001
+timeout killserver h14: Server listening on TCP port 5001
+timeout killserver h0: Server listening on TCP port 5001
+timeout killserver h11: Server listening on TCP port 5001
+timeout killserver h7: Server listening on TCP port 5001
+timeout killserver h13: Server listening on TCP port 5001
+timeout killserver h1: Server listening on TCP port 5001
+timeout killserver h8: Server listening on TCP port 5001
+timeout killserver h5: Server listening on TCP port 5001
+timeout killserver h6: Server listening on TCP port 5001
+timeout killserver h4: Server listening on TCP port 5001
+timeout killserver h3: Server listening on TCP port 5001
+timeout killserver h10: Server listening on TCP port 5001
+timeout killserver h9: Server listening on TCP port 5001
+timeout killserver h12: TCP window size: 85.3 KByte (default)
+timeout killserver h2: TCP window size: 85.3 KByte (default)
+timeout killserver h14: TCP window size: 85.3 KByte (default)
+timeout killserver h0: TCP window size: 85.3 KByte (default)
+timeout killserver h11: TCP window size: 85.3 KByte (default)
+timeout killserver h7: TCP window size: 85.3 KByte (default)
+timeout killserver h13: TCP window size: 85.3 KByte (default)
+timeout killserver h1: TCP window size: 85.3 KByte (default)
+timeout killserver h8: TCP window size: 85.3 KByte (default)
+timeout killserver h5: TCP window size: 85.3 KByte (default)
+timeout killserver h6: TCP window size: 85.3 KByte (default)
+timeout killserver h4: TCP window size: 85.3 KByte (default)
+timeout killserver h3: TCP window size: 85.3 KByte (default)
+timeout killserver h10: TCP window size: 85.3 KByte (default)
+timeout killserver h9: TCP window size: 85.3 KByte (default)
+timeout killserver h12: ------------------------------------------------------------
+timeout killserver h2: ------------------------------------------------------------
+timeout killserver h14: ------------------------------------------------------------
+timeout killserver h0: ------------------------------------------------------------
+timeout killserver h11: ------------------------------------------------------------
+timeout killserver h7: ------------------------------------------------------------
+timeout killserver h13: ------------------------------------------------------------
+timeout killserver h1: ------------------------------------------------------------
+timeout killserver h8: ------------------------------------------------------------
+timeout killserver h5: ------------------------------------------------------------
+timeout killserver h6: ------------------------------------------------------------
+timeout killserver h4: ------------------------------------------------------------
+timeout killserver h3: ------------------------------------------------------------
+timeout killserver h10: ------------------------------------------------------------
+timeout killserver h9: ------------------------------------------------------------
+timeout killserver h12: [ 68] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39730
+timeout killserver h2: [ 68] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56216
+timeout killserver h14: [ 68] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59762
+timeout killserver h0: [ 68] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49090
+timeout killserver h11: [ 68] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35136
+timeout killserver h7: [ 68] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 35982
+timeout killserver h13: [ 68] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57978
+timeout killserver h1: [ 68] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36870
+timeout killserver h8: [ 68] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40620
+timeout killserver h5: [ 68] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47662
+timeout killserver h6: [ 68] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40712
+timeout killserver h4: [ 68] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59608
+timeout killserver h3: [ 68] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60690
+timeout killserver h10: [ 68] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57782
+timeout killserver h9: [ 68] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34044
+timeout killserver h12: [ 69] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39754
+timeout killserver h2: [ 69] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56228
+timeout killserver h14: [ 69] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59758
+timeout killserver h0: [ 70] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49158
+timeout killserver h11: [ 69] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35128
+timeout killserver h7: [ 69] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 35956
+timeout killserver h13: [ 69] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57986
+timeout killserver h1: [ 69] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36882
+timeout killserver h8: [ 69] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40648
+timeout killserver h5: [ 69] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47668
+timeout killserver h6: [ 69] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40680
+timeout killserver h4: [ 69] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59632
+timeout killserver h3: [ 69] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60696
+timeout killserver h10: [ 69] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57756
+timeout killserver h9: [ 69] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34088
+timeout killserver h12: [ 71] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39758
+timeout killserver h2: [ 70] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56252
+timeout killserver h14: [ 70] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59748
+timeout killserver h0: [ 69] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49152
+timeout killserver h11: [ 70] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35134
+timeout killserver h7: [ 70] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 36010
+timeout killserver h13: [ 70] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57976
+timeout killserver h1: [ 71] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36880
+timeout killserver h8: [ 71] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40660
+timeout killserver h5: [ 70] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47670
+timeout killserver h6: [ 70] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40702
+timeout killserver h4: [ 70] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59620
+timeout killserver h3: [ 70] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60704
+timeout killserver h10: [ 70] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57768
+timeout killserver h9: [ 70] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34080
+timeout killserver h12: [ 70] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39744
+timeout killserver h2: [ 72] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56260
+timeout killserver h14: [ 71] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59752
+timeout killserver h0: [ 71] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49146
+timeout killserver h11: [ 71] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35130
+timeout killserver h7: [ 71] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 36018
+timeout killserver h13: [ 71] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57982
+timeout killserver h1: [ 70] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36868
+timeout killserver h8: [ 70] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40632
+timeout killserver h5: [ 71] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47664
+timeout killserver h6: [ 71] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40718
+timeout killserver h4: [ 71] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59604
+timeout killserver h3: [ 71] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60694
+timeout killserver h10: [ 71] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57784
+timeout killserver h9: [ 71] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34094
+timeout killserver h12: [ 72] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39750
+timeout killserver h2: [ 71] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56220
+timeout killserver h14: [ 73] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59798
+timeout killserver h0: [ 72] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49140
+timeout killserver h11: [ 72] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35146
+timeout killserver h7: [ 73] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 35988
+timeout killserver h13: [ 72] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57980
+timeout killserver h1: [ 72] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36876
+timeout killserver h8: [ 72] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40626
+timeout killserver h5: [ 72] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47658
+timeout killserver h6: [ 72] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40682
+timeout killserver h4: [ 72] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59612
+timeout killserver h3: [ 72] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60700
+timeout killserver h10: [ 72] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57760
+timeout killserver h9: [ 72] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34098
+timeout killserver h12: [ 73] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39722
+timeout killserver h2: [ 73] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56218
+timeout killserver h14: [ 72] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59792
+timeout killserver h0: [ 73] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49132
+timeout killserver h11: [ 73] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35142
+timeout killserver h7: [ 72] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 35994
+timeout killserver h13: [ 73] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57988
+timeout killserver h1: [ 73] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36866
+timeout killserver h8: [ 73] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40666
+timeout killserver h5: [ 73] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47654
+timeout killserver h6: [ 73] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40694
+timeout killserver h4: [ 73] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59626
+timeout killserver h3: [ 73] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60688
+timeout killserver h10: [ 73] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57778
+timeout killserver h9: [ 73] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34092
+timeout killserver h12: [ 74] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39712
+timeout killserver h2: [ 75] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56256
+timeout killserver h14: [ 74] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59796
+timeout killserver h0: [ 74] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49106
+timeout killserver h11: [ 75] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35138
+timeout killserver h7: [ 74] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 35964
+timeout killserver h13: [ 74] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57972
+timeout killserver h1: [ 74] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36872
+timeout killserver h8: [ 74] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40644
+timeout killserver h5: [ 74] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47666
+timeout killserver h6: [ 74] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40686
+timeout killserver h4: [ 74] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59538
+timeout killserver h3: [ 74] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60702
+timeout killserver h10: [ 74] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57786
+timeout killserver h9: [ 74] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34096
+timeout killserver h12: [ 75] local 10.0.0.13 port 5001 connected with 10.0.0.9 port 39738
+timeout killserver h2: [ 74] local 10.0.0.3 port 5001 connected with 10.0.0.13 port 56224
+timeout killserver h14: [ 75] local 10.0.0.15 port 5001 connected with 10.0.0.10 port 59794
+timeout killserver h0: [ 75] local 10.0.0.1 port 5001 connected with 10.0.0.6 port 49124
+timeout killserver h11: [ 74] local 10.0.0.12 port 5001 connected with 10.0.0.1 port 35124
+timeout killserver h7: [ 75] local 10.0.0.8 port 5001 connected with 10.0.0.3 port 35974
+timeout killserver h13: [ 75] local 10.0.0.14 port 5001 connected with 10.0.0.4 port 57970
+timeout killserver h1: [ 75] local 10.0.0.2 port 5001 connected with 10.0.0.12 port 36886
+timeout killserver h8: [ 75] local 10.0.0.9 port 5001 connected with 10.0.0.5 port 40636
+timeout killserver h5: [ 75] local 10.0.0.6 port 5001 connected with 10.0.0.15 port 47672
+timeout killserver h6: [ 75] local 10.0.0.7 port 5001 connected with 10.0.0.14 port 40672
+timeout killserver h4: [ 75] local 10.0.0.5 port 5001 connected with 10.0.0.7 port 59598
+timeout killserver h3: [ 75] local 10.0.0.4 port 5001 connected with 10.0.0.2 port 60698
+timeout killserver h10: [ 75] local 10.0.0.11 port 5001 connected with 10.0.0.8 port 57772
+timeout killserver h9: [ 75] local 10.0.0.10 port 5001 connected with 10.0.0.11 port 34084
+timeout killserver h12: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h2: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h14: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h0: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h11: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h7: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h13: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h1: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h8: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h5: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h6: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h4: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h3: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h10: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h9: [ ID] Interval       Transfer     Bandwidth
+timeout killserver h12: [ 75]  0.0- 4.0 sec  11.3 KBytes  23.2 Kbits/sec
+timeout killserver h2: [ 75]  0.0- 2.7 sec  2.83 KBytes  8.73 Kbits/sec
+timeout killserver h14: [ 74]  0.0- 4.0 sec  4.24 KBytes  8.77 Kbits/sec
+timeout killserver h0: [ 71]  0.0- 2.1 sec  5.66 KBytes  22.1 Kbits/sec
+timeout killserver h11: [ 75]  0.0-57.5 sec   384 KBytes  54.7 Kbits/sec
+timeout killserver h7: [ 69]  0.0-60.3 sec   640 KBytes  86.9 Kbits/sec
+timeout killserver h13: [ 75]  0.0-48.6 sec   896 KBytes   151 Kbits/sec
+timeout killserver h1: [ 69]  0.0-60.8 sec   640 KBytes  86.3 Kbits/sec
+timeout killserver h8: [ 75]  0.0- 3.2 sec  9.90 KBytes  25.5 Kbits/sec
+timeout killserver h5: [ 75]  0.0- 5.3 sec  11.3 KBytes  17.4 Kbits/sec
+timeout killserver h6: [ 70]  0.0-44.4 sec   640 KBytes   118 Kbits/sec
+timeout killserver h4: [ 68]  0.0-44.8 sec   512 KBytes  93.6 Kbits/sec
+timeout killserver h3: [ 75]  0.0- 2.2 sec  0.00 ˆ ­ûs  68355325425849368576 Bytes/sec
+timeout killserver h10: [ 75]  0.0- 2.8 sec  0.00 ˆ ­ûs  53538598162052644864 Bytes/sec
+timeout killserver h9: [ 75]  0.0- 2.9 sec  0.00 ˆ ­ûs  50589510418848268288 Bytes/sec
+timeout killserver h12: [ 73]  0.0-49.4 sec   384 KBytes  63.6 Kbits/sec
+timeout killserver h2: [ 74]  0.0-65.8 sec   384 KBytes  47.8 Kbits/sec
+timeout killserver h14: [ 72]  0.0-58.8 sec   384 KBytes  53.5 Kbits/sec
+timeout killserver h0: [ 75]  0.0- 8.2 sec  14.1 KBytes  14.1 Kbits/sec
+timeout killserver h11: [ 71]  0.0-70.5 sec   512 KBytes  59.5 Kbits/sec
+timeout killserver h7: [ 72]  0.0-64.4 sec   768 KBytes  97.7 Kbits/sec
+timeout killserver h13: [ 68]  0.0-49.3 sec   768 KBytes   128 Kbits/sec
+timeout killserver h1: [ 73]  0.0-61.6 sec   640 KBytes  85.1 Kbits/sec
+timeout killserver h8: [ 68]  0.0-38.3 sec   768 KBytes   164 Kbits/sec
+timeout killserver h5: [ 74]  0.0- 5.5 sec  1.41 KBytes  2.11 Kbits/sec
+timeout killserver h6: [ 68]  0.0-45.9 sec   640 KBytes   114 Kbits/sec
+timeout killserver h4: [ 72]  0.0-47.4 sec   512 KBytes  88.5 Kbits/sec
+timeout killserver h3: [ 70]  0.0-64.9 sec  1.88 MBytes   242 Kbits/sec
+timeout killserver h10: [ 72]  0.0-40.6 sec   256 KBytes  51.7 Kbits/sec
+timeout killserver h9: [ 74]  0.0-68.1 sec   640 KBytes  77.0 Kbits/sec
+timeout killserver h12: [ 70]  0.0-57.9 sec   512 KBytes  72.4 Kbits/sec
+timeout killserver h2: [ 72]  0.0-88.1 sec  1.12 MBytes   107 Kbits/sec
+timeout killserver h14: [ 68]  0.0-65.6 sec  1.12 MBytes   144 Kbits/sec
+timeout killserver h0: [ 68]  0.0-78.1 sec   640 KBytes  67.2 Kbits/sec
+timeout killserver h11: [ 74]  0.0-77.1 sec   512 KBytes  54.4 Kbits/sec
+timeout killserver h7: [ 73]  0.0-65.3 sec  1.12 MBytes   144 Kbits/sec
+timeout killserver h13: [ 72]  0.0-51.9 sec  1.00 MBytes   161 Kbits/sec
+timeout killserver h1: [ 74]  0.0-70.8 sec   512 KBytes  59.2 Kbits/sec
+timeout killserver h8: [ 70]  0.0-49.5 sec  1.00 MBytes   169 Kbits/sec
+timeout killserver h5: [ 70]  0.0-51.2 sec   384 KBytes  61.4 Kbits/sec
+timeout killserver h6: [ 69]  0.0-51.2 sec   640 KBytes   102 Kbits/sec
+timeout killserver h4: [ 73]  0.0-47.8 sec   512 KBytes  87.7 Kbits/sec
+timeout killserver h3: [ 68]  0.0-66.8 sec  1.25 MBytes   157 Kbits/sec
+timeout killserver h10: [ 73]  0.0-42.3 sec  1.00 MBytes   198 Kbits/sec
+timeout killserver h9: [ 69]  0.0-71.8 sec   640 KBytes  73.0 Kbits/sec
+timeout killserver h12: [ 68]  0.0-60.1 sec   512 KBytes  69.8 Kbits/sec
+timeout killserver h2: [ 68]  0.0-88.4 sec   896 KBytes  83.0 Kbits/sec
+timeout killserver h14: [ 75]  0.0-71.1 sec  1.00 MBytes   118 Kbits/sec
+timeout killserver h0: [ 73]  0.0-80.4 sec   512 KBytes  52.2 Kbits/sec
+timeout killserver h11: [ 70]  0.0-81.8 sec   512 KBytes  51.3 Kbits/sec
+timeout killserver h7: [ 70]  0.0-72.6 sec   512 KBytes  57.7 Kbits/sec
+timeout killserver h13: [ 70]  0.0-67.4 sec   384 KBytes  46.6 Kbits/sec
+timeout killserver h1: [ 68]  0.0-71.9 sec   640 KBytes  72.9 Kbits/sec
+timeout killserver h8: [ 69]  0.0-54.0 sec   768 KBytes   117 Kbits/sec
+timeout killserver h5: [ 73]  0.0-53.5 sec   512 KBytes  78.4 Kbits/sec
+timeout killserver h6: [ 73]  0.0-54.0 sec   640 KBytes  97.1 Kbits/sec
+timeout killserver h4: [ 71]  0.0-51.2 sec   512 KBytes  82.0 Kbits/sec
+timeout killserver h3: [ 71]  0.0-73.2 sec  1.62 MBytes   186 Kbits/sec
+timeout killserver h10: [ 69]  0.0-46.0 sec   512 KBytes  91.1 Kbits/sec
+timeout killserver h9: [ 70]  0.0-73.1 sec   512 KBytes  57.4 Kbits/sec
+timeout killserver h12: [ 72]  0.0-65.0 sec   512 KBytes  64.5 Kbits/sec
+timeout killserver h2: [ 71]  0.0-89.4 sec  1.00 MBytes  93.8 Kbits/sec
+timeout killserver h14: [ 73]  0.0-74.6 sec   896 KBytes  98.4 Kbits/sec
+timeout killserver h0: [ 72]  0.0-84.6 sec   512 KBytes  49.6 Kbits/sec
+timeout killserver h11: [ 69]  0.0-82.9 sec   384 KBytes  37.9 Kbits/sec
+timeout killserver h7: [ 74]  0.0-87.2 sec   384 KBytes  36.1 Kbits/sec
+timeout killserver h13: [ 74]  0.0-77.7 sec   384 KBytes  40.5 Kbits/sec
+timeout killserver h1: [ 72]  0.0-79.4 sec   640 KBytes  66.0 Kbits/sec
+timeout killserver h8: [ 73]  0.0-74.9 sec   896 KBytes  98.0 Kbits/sec
+timeout killserver h5: [ 72]  0.0-60.4 sec   512 KBytes  69.4 Kbits/sec
+timeout killserver h6: [ 74]  0.0-54.0 sec   512 KBytes  77.6 Kbits/sec
+timeout killserver h4: [ 70]  0.0-65.8 sec   640 KBytes  79.7 Kbits/sec
+timeout killserver h3: [ 74]  0.0-81.4 sec  1.25 MBytes   129 Kbits/sec
+timeout killserver h10: [ 74]  0.0-71.0 sec   384 KBytes  44.3 Kbits/sec
+timeout killserver h9: [ 73]  0.0-77.4 sec  1.00 MBytes   108 Kbits/sec
+timeout killserver h12: [ 74]  0.0-68.6 sec   512 KBytes  61.1 Kbits/sec
+timeout killserver h2: [ 73]  0.0-90.6 sec  1.00 MBytes  92.6 Kbits/sec
+timeout killserver h14: [ 69]  0.0-76.5 sec   384 KBytes  41.1 Kbits/sec
+timeout killserver h0: [ 69]  0.0-84.8 sec   512 KBytes  49.4 Kbits/sec
+timeout killserver h11: [ 68]  0.0-83.7 sec   640 KBytes  62.7 Kbits/sec
+timeout killserver h7: [ 75]  0.0-88.5 sec   896 KBytes  82.9 Kbits/sec
+timeout killserver h13: [ 71]  0.0-87.7 sec   896 KBytes  83.7 Kbits/sec
+timeout killserver h1: [ 71]  0.0-80.1 sec   768 KBytes  78.6 Kbits/sec
+timeout killserver h8: [ 71]  0.0-81.2 sec  1.25 MBytes   129 Kbits/sec
+timeout killserver h5: [ 69]  0.0-65.2 sec   512 KBytes  64.3 Kbits/sec
+timeout killserver h6: [ 71]  0.0-64.8 sec   512 KBytes  64.7 Kbits/sec
+timeout killserver h4: [ 69]  0.0-70.6 sec   384 KBytes  44.6 Kbits/sec
+timeout killserver h3: [ 73]  0.0-83.2 sec   896 KBytes  88.3 Kbits/sec
+timeout killserver h10: [ 68]  0.0-82.9 sec   384 KBytes  38.0 Kbits/sec
+timeout killserver h9: [ 71]  0.0-77.8 sec   384 KBytes  40.5 Kbits/sec
+timeout killserver h12: [ 71]  0.0-68.7 sec   768 KBytes  91.6 Kbits/sec
+timeout killserver h2: [ 69]  0.0-90.9 sec   640 KBytes  57.7 Kbits/sec
+timeout killserver h14: [ 71]  0.0-78.1 sec   768 KBytes  80.5 Kbits/sec
+timeout killserver h0: [ 70]  0.0-87.0 sec   512 KBytes  48.2 Kbits/sec
+timeout killserver h11: [ 72]  0.0-84.4 sec   512 KBytes  49.7 Kbits/sec
+timeout killserver h7: [ 68]  0.0-90.2 sec  1.00 MBytes  92.9 Kbits/sec
+timeout killserver h13: [ 69]  0.0-88.3 sec   768 KBytes  71.2 Kbits/sec
+timeout killserver h1: [ 70]  0.0-80.5 sec   640 KBytes  65.2 Kbits/sec
+timeout killserver h8: [ 74]  0.0-82.7 sec  1.25 MBytes   127 Kbits/sec
+timeout killserver h5: [ 71]  0.0-70.8 sec   512 KBytes  59.3 Kbits/sec
+timeout killserver h6: [ 75]  0.0-67.7 sec   512 KBytes  62.0 Kbits/sec
+timeout killserver h4: [ 74]  0.0-70.6 sec   512 KBytes  59.4 Kbits/sec
+timeout killserver h3: [ 69]  0.0-84.2 sec  1.12 MBytes   112 Kbits/sec
+timeout killserver h10: [ 71]  0.0-84.1 sec  1.00 MBytes  99.7 Kbits/sec
+timeout killserver h9: [ 68]  0.0-79.8 sec  1.12 MBytes   118 Kbits/sec
+timeout killserver h12: [ 69]  0.0-74.7 sec   512 KBytes  56.2 Kbits/sec
+timeout killserver h2: [ 70]  0.0-91.1 sec  1.38 MBytes   127 Kbits/sec
+timeout killserver h14: [ 70]  0.0-78.8 sec  1.00 MBytes   107 Kbits/sec
+timeout killserver h0: [ 74]  0.0-87.2 sec   640 KBytes  60.1 Kbits/sec
+timeout killserver h11: [ 73]  0.0-84.8 sec   768 KBytes  74.2 Kbits/sec
+timeout killserver h7: [ 71]  0.0-90.8 sec  1.38 MBytes   127 Kbits/sec
+timeout killserver h13: [ 73]  0.0-88.4 sec   640 KBytes  59.3 Kbits/sec
+timeout killserver h1: [ 75]  0.0-85.2 sec   640 KBytes  61.6 Kbits/sec
+timeout killserver h8: [ 72]  0.0-88.8 sec  1.25 MBytes   118 Kbits/sec
+timeout killserver h5: [ 68]  0.0-70.8 sec   384 KBytes  44.4 Kbits/sec
+timeout killserver h6: [ 72]  0.0-69.3 sec   640 KBytes  75.7 Kbits/sec
+timeout killserver h4: [ 75]  0.0-78.7 sec   512 KBytes  53.3 Kbits/sec
+timeout killserver h3: [ 72]  0.0-89.2 sec   512 KBytes  47.0 Kbits/sec
+timeout killserver h10: [ 70]  0.0-91.0 sec   896 KBytes  80.7 Kbits/sec
+timeout killserver h9: [ 72]  0.0-81.1 sec   768 KBytes  77.6 Kbits/sec
+timeout killserver h12: [SUM]  0.0-74.7 sec  3.64 MBytes   408 Kbits/sec
+timeout killserver h2: [SUM]  0.0-91.1 sec  6.38 MBytes   587 Kbits/sec
+timeout killserver h14: [SUM]  0.0-78.8 sec  5.50 MBytes   586 Kbits/sec
+timeout killserver h0: [SUM]  0.0-87.2 sec  3.27 MBytes   315 Kbits/sec
+timeout killserver h11: [SUM]  0.0-84.8 sec  4.12 MBytes   408 Kbits/sec
+timeout killserver h7: [SUM]  0.0-90.8 sec  6.62 MBytes   612 Kbits/sec
+timeout killserver h13: [SUM]  0.0-88.4 sec  5.62 MBytes   534 Kbits/sec
+timeout killserver h1: [SUM]  0.0-85.2 sec  5.00 MBytes   492 Kbits/sec
+timeout killserver h8: [SUM]  0.0-88.8 sec  7.13 MBytes   674 Kbits/sec
+timeout killserver h5: [SUM]  0.0-70.8 sec  2.76 MBytes   327 Kbits/sec
+timeout killserver h6: [SUM]  0.0-69.3 sec  4.62 MBytes   560 Kbits/sec
+timeout killserver h4: [SUM]  0.0-78.7 sec  4.00 MBytes   426 Kbits/sec
+timeout killserver h3: [SUM]  0.0-89.2 sec  8.50 MBytes   799 Kbits/sec
+timeout killserver h10: [SUM]  0.0-91.0 sec  4.37 MBytes   403 Kbits/sec
+timeout killserver h9: [SUM]  0.0-81.1 sec  5.00 MBytes   517 Kbits/sec
+timeout kill
+[0.32, 7408687626561.0, 7378139473232.0, 7375407460215.0, 7445199266108.0, 7375473072656.0, 7376948554981.0, 7376412416917.0, 7375721157210.0, 7414400563236.0, 0.32, 0.31, 0.41, 0.41, 0.3, 0.4, 0.49, 0.34, 0.29, 0.33, 0.33, 0.42, 0.27, 0.14, 0.22, 0.18, 0.36, 0.18, 0.35, 0.26, 0.42, 0.17, 0.38, 0.08, 0.38, 0.25, 0.4, 0.6, 0.16, 0.12, 0.19, 0.15, 0.27, 0.3, 0.14, 0.14, 0.18, 0.14, 0.28, 0.14, 0.17, 0.1, 0.14, 0.14, 0.27, 0.17, 0.16, 0.13, 0.1, 0.16, 0.12, 0.16, 0.21, 0.24, 0.15, 0.12, 0.09, 0.12, 0.23, 0.29, 0.14, 0.08, 0.11, 0.11, 0.11, 0.11, 0.11, 0.13, 0.13, 0.24, 0.08, 0.26, 0.1, 0.13, 0.13, 0.13, 0.12, 0.07, 0.07, 0.14, 0.09, 0.16, 0.15, 0.09, 0.09, 0.09, 0.27, 0.08, 0.06, 0.08, 0.1, 0.1, 0.13, 0.05, 0.09, 0.19, 0.05, 0.06, 0.05, 0.06, 0.05, 0.07, 0.13, 0.06, 0.04, 0.08, 0.14, 0.05]
+got 118 speeds, avg 4510263701093.963867 Mbits/s*** Stopping 1 controllers
+c0 
+*** Stopping 45 links
+.............................................
+*** Stopping 15 switches
+s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 
+*** Stopping 15 hosts
+h0 *** gave up after 3 retries
