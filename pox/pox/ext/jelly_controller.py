@@ -50,7 +50,7 @@ class Tutorial (object):
 
     S = 10
     N = 10
-    r = 3
+    r = 4
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
@@ -153,53 +153,14 @@ class Tutorial (object):
     src = packet.src
     in_port = packet_in.in_port
     if (src, dst, in_port) in route_map:
-    #     log.error("DAFAQ")
-    #     log.error(src)
-    #     log.error(dst)
-    #     log.error(in_port)
-    # else:
         val = route_map[(src, dst, in_port)]
         out_port = random.sample(val, 1)[0]
-        log.error("hell yeah")
         # log.error(src)
         # log.error(dst)
         # log.error(in_port)
         # log.error(out_port)
-        # log.error('%s %s %d %d'%(str(src), str(dst), in_port, out_port))
+        log.error('%s %s %d %d'%(str(src), str(dst), in_port, out_port))
         self.resend_packet(packet_in, out_port)
-    # Here's some psuedocode to start you off implementing a learning
-    # switch.  You'll need to rewrite it as real Python code.
-
-    # DOING NOTHING
-    # # Learn the port for the source MAC
-    # if str(packet.src) not in self.mac_to_port:
-    #   self.mac_to_port[str(packet.src)] = packet_in.in_port
-    #   log.error("mapped %s %d"%(str(packet.src), packet_in.in_port))
-
-    # # if the port associated with the destination MAC of the packet is known:
-    # if str(packet.dst) in self.mac_to_port:
-    #   # Send packet out the associated port
-    #   # log.error("Sending out of port%d"%(self.mac_to_port[str(packet.dst)],))
-    #   # self.resend_packet(packet_in, self.mac_to_port[str(packet.dst)])
-
-    #   # Once you have the above working, try pushing a flow entry
-    #   # instead of resending the packet (comment out the above and
-    #   # uncomment and complete the below.)
-    #   # log.error(dir(packet))
-    #   log.error("Installing flow..., src:%s, dst:%s, in port:%d, out port:%d"%(str(packet.src), str(packet.dst), self.mac_to_port[str(packet.src)], self.mac_to_port[str(packet.dst)]))
-    #   # # Maybe the log statement should have source/destination/port?
-
-    #   msg = of.ofp_flow_mod()
-    #   msg.data = packet_in
-    #   # Set fields to match received packet
-    #   msg.match.dl_src = packet.src
-    #   msg.match.dl_dst = packet.dst
-    #   msg.actions.append(of.ofp_action_output(port = self.mac_to_port[str(packet.dst)]))
-    #   self.connection.send(msg)
-    # else:
-    #   # Flood the packet out everything but the input port
-    #   # This part looks familiar, right?
-    #   self.resend_packet(packet_in, of.OFPP_ALL)
 
 
   def _handle_PacketIn (self, event):
@@ -214,12 +175,6 @@ class Tutorial (object):
 
     packet_in = event.ofp # The actual ofp_packet_in message.
 
-    # Comment out the following line and uncomment the one after
-    # when starting the exercise.
-    print "Src: " + str(packet.src)
-    print "Dest: " + str(packet.dst)
-    print "Event port: " + str(event.port)
-    # self.act_like_hub(packet, packet_in)
     self.act_like_switch(packet, packet_in)
 
 

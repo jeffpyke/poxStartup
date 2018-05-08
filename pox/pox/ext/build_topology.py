@@ -20,7 +20,7 @@ from signal import SIGINT
 
 S = 10
 N = 10
-r = 3
+r = 4
 
 class JellyFishTop(Topo):
     ''' TODO, build your topology here'''
@@ -56,50 +56,46 @@ def experiment(net):
                 h2 = net.get('h%d'%(j,))
                 h1.setARP(h2.IP(), h2.MAC())
         net.start()
-        seconds = 40
         cpopens = {}
         spopens = {}
         speeds = []
         assignments = range(S) 
         net.pingAll()
+        net.iperf(seconds = 20)
+        net.iperf(seconds = 20)
+        net.iperf(seconds = 20)
+        flows = 8
         while any([a == i for i, a in enumerate(assignments)]):
             random.shuffle(assignments)
         for i, h in enumerate(net.hosts):
-#net.iperf((h, net.hosts[assignments[i]]))
             other_h = net.hosts[assignments[i]]
-# add --parallel for 8 flows
             spopens[other_h] = other_h.popen('iperf', '-s')
-            cpopens[h] = h.popen('iperf', '-P', '8', '-c', other_h.IP(), '-f', 'm')
-        endTime = time() + seconds
+            cpopens[h] = h.popen('iperf', '-c', other_h.IP(), '-f', 'm', '-P', str(flows), '-t', '20')
         cclosed = 0
         sclosed = 0
         for h, line in pmonitor(cpopens, timeoutms=10000):
             if h:
                 info('%s: %s' % (h.name, line))
                 if 'Mbit' in line:
-                    speed = float(line.split()[-2])
-                    speeds.append(speed)
-                    cclosed += 1
-            if cclosed == N:
+                    if 'SUM' not in line:
+                        speed = float(line.split()[-2])
+                        speeds.append(speed)
+                        cclosed += 1
+            if cclosed == N*(flows): # +1 for the sum equation
               for p in cpopens.values():
                 p.send_signal(SIGINT)
- #            if time() >= endTime:
- #                info("shutting down")
- #                for p in cpopens.values():
- #                    p.send_signal(SIGINT)
 
         for h, line in pmonitor(spopens, timeoutms=10000):
             if h:
                 info('server %s: %s' % (h.name, line))
-                if 'bits/sec' in line:
+                if 'bits/sec' in line and 'SUM' not in line:
                   sclosed += 1
-            if sclosed == N:
- #            if time() >= endTime:
+            if sclosed == N*(flows):
                 info("shutting down")
                 for p in spopens.values():
                     p.send_signal(SIGINT)
 
-        CLI(net)
+        # CLI(net)
         info("got %d speeds, avg %f Mbits/s" % (len(speeds), float(sum(speeds)) / len(speeds)))
         net.stop()
 
