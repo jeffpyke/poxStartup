@@ -26,6 +26,7 @@ import pox.openflow.libopenflow_01 as of
 from pox.lib.addresses import EthAddr
 import networkx as nx
 import random
+from itertools import islice
 
 log = core.getLogger()
 
@@ -51,6 +52,7 @@ class Tutorial (object):
     S = 10
     N = 10
     r = 4
+    use_ecmp = False
     # seed = 100 is constant so that the corresponding topo and controller graph are the same
     rrg = nx.random_regular_graph(r, N, 100)
     for i in range(S):
@@ -64,7 +66,7 @@ class Tutorial (object):
 
         if src_switch == dst_switch:
           path = [[src_switch]]
-        else:
+        elif use_ecmp:
           # path = [src_switch, dst_switch] # path to go from src to dst
           paths = []
           for p in nx.all_shortest_paths(rrg, src_switch, dst_switch):
@@ -76,6 +78,8 @@ class Tutorial (object):
           log.error(path)
           log.error('PATH LEN: %d'%(len(path)))
           log.error('\n')
+        else:
+          path = list(islice(nx.shortest_simple_paths(rrg, src_switch, dst_switch), 8))
         for path_ in path:
             self.add_entry(src_hwaddr, dst_hwaddr, [i] + path_ + [j], S)
     # log.error(route_map)
